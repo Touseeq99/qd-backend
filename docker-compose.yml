@@ -1,0 +1,70 @@
+services:
+  hr-assistant:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+      cache_from:
+        - qd_hr_assistant-hr-assistant
+    container_name: hr-assistant
+    restart: unless-stopped
+    networks:
+      - hr-network
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./uploaded_folders:/app/uploaded_folders
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - /dev/shm:/dev/shm
+      - ./.env:/app/.env
+    environment:
+      - GRPC_DNS_RESOLVER=native
+      - GRPC_ENABLE_FORK_SUPPORT=1
+      - WORKERS=${WORKERS:-4}  # Default to 4 workers, override in .env if needed
+      - TIMEOUT=120
+      - KEEP_ALIVE=30
+      - PORT=8000
+      - LOG_LEVEL=info
+      - PYTHONUNBUFFERED=1
+      - PYTHONHASHSEED=random
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4G
+        reservations:
+          cpus: '0.5'
+          memory: 1G
+    sysctls:
+      - net.core.somaxconn=1024
+      - net.ipv4.tcp_max_syn_backlog=1024
+    ulimits:
+      nofile:
+        soft: 16384
+        hard: 32768
+    shm_size: '512mb'
+    command: >
+      gunicorn -c gunicorn.conf.py main:app
+
+networks:
+  hr-network:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  data:
+    driver: local
+  logs:
+    driver: local

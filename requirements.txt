@@ -1,0 +1,42 @@
+# Core LangChain packages
+langchain
+langchain-community
+langchain-core
+
+# Vector database
+qdrant-client
+langchain-qdrant
+
+# LLM providers
+langchain-groq
+langchain-google-genai
+langchain-openai
+
+# Web framework
+fastapi
+uvicorn[standard]
+gunicorn
+
+# Performance
+uvloop
+httptools
+watchfiles
+websockets
+
+# Document processing
+unstructured
+pdfminer.six
+
+# LangServe
+langserve
+
+# Optional: Cohere (commented out to avoid conflicts)
+langchain_cohere
+cohere
+
+# Utilities
+python-dotenv
+python-multipart
+psutil
+langchain-text-splitters
+fastembed-gpu
