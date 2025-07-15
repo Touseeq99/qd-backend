@@ -31083,3 +31083,67 @@ ValueError: Prompt must accept context as an input variable. Received prompt wit
 2025-07-15 00:01:05,261 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
 2025-07-15 00:01:08,529 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
 2025-07-15 00:01:08,822 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 00:27:38,960 - root - INFO - Starting HR Assistant...
+2025-07-15 00:27:39,126 - root - INFO - Configuration validated successfully
+2025-07-15 00:27:39,129 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 00:27:39,129 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 00:27:39,129 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 00:27:39,129 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 00:27:43,627 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 00:27:44,513 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 00:27:44,746 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 00:27:46,306 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 00:27:46,468 - ingestion_retrieval.retrieval - INFO - Using Google embedding model: models/embedding-001
+2025-07-15 00:27:46,476 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] Loading LLM due to cache miss or invalidation...
+2025-07-15 00:27:46,633 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 00:27:46,633 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 00:27:46,633 - root - INFO - Loading groq LLM...
+2025-07-15 00:27:49,509 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 00:27:49,569 - ingestion_retrieval.retrieval - INFO - LLM warm-up completed successfully
+2025-07-15 00:27:49,576 - root - INFO - Skipping pipeline test during startup (will be tested on first query)
+2025-07-15 00:27:49,577 - root - INFO - HR Assistant started successfully
+2025-07-15 00:27:57,806 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 00:27:57,823 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 00:27:57,824 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 00:27:57,826 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 00:28:00,087 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 00:28:00,255 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 00:28:01,082 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+2025-07-15 00:28:01,287 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+2025-07-15 00:28:01,287 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 00:28:01,560 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 00:28:03,031 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 00:28:03,031 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 00:29:13,506 - root - INFO - Starting HR Assistant...
+2025-07-15 00:29:13,667 - root - INFO - Configuration validated successfully
+2025-07-15 00:29:13,667 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 00:29:13,669 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 00:29:13,670 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 00:29:13,670 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 00:29:17,489 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 00:29:18,107 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 00:29:18,332 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 00:29:20,180 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 00:29:20,325 - ingestion_retrieval.retrieval - INFO - Using Google embedding model: models/embedding-001
+2025-07-15 00:29:20,333 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] Loading LLM due to cache miss or invalidation...
+2025-07-15 00:29:20,480 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 00:29:20,480 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 00:29:20,480 - root - INFO - Loading groq LLM...
+2025-07-15 00:29:23,209 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 00:29:23,227 - ingestion_retrieval.retrieval - INFO - LLM warm-up completed successfully
+2025-07-15 00:29:23,232 - root - INFO - Skipping pipeline test during startup (will be tested on first query)
+2025-07-15 00:29:23,232 - root - INFO - HR Assistant started successfully
+2025-07-15 00:29:42,400 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 00:29:43,048 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+2025-07-15 00:29:43,224 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 00:29:43,242 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 00:29:43,253 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 00:29:43,253 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 00:29:43,254 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 00:29:45,398 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 00:29:46,174 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+2025-07-15 00:29:46,464 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 00:29:46,637 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 00:29:46,637 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 00:29:54,926 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 00:29:54,926 - root - INFO - [LLM CONFIG] Selecting Groq as provider

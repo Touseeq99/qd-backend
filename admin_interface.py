@@ -743,22 +743,32 @@ async def admin_dashboard_html():
             .tab-bar {
                 display: flex;
                 flex-direction: row;
+                justify-content: center;
+                align-items: center;
                 border-bottom: 2px solid var(--border);
                 margin-bottom: 34px;
+                gap: 0;
             }
             .tab-button {
+                flex: 1 1 0;
+                min-width: 150px;
+                max-width: 220px;
+                height: 54px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 background: var(--bg-card);
                 border: 1.5px solid var(--border);
                 border-bottom: none;
-                padding: 15px 36px 13px 36px;
-                cursor: pointer;
                 color: var(--text-muted);
                 font-size: 1.13em;
                 border-radius: 10px 10px 0 0;
-                margin-right: 4px;
+                margin-right: 0;
                 margin-bottom: -2px;
                 transition: background 0.18s, color 0.18s, border 0.18s;
                 font-weight: 600;
+                box-sizing: border-box;
+                padding: 0 8px;
             }
             .tab-button.active {
                 background: var(--primary);
