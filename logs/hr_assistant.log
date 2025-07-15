@@ -31147,3 +31147,1966 @@ ValueError: Prompt must accept context as an input variable. Received prompt wit
 2025-07-15 00:29:46,637 - root - INFO - [LLM CONFIG] Selecting Groq as provider
 2025-07-15 00:29:54,926 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
 2025-07-15 00:29:54,926 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 10:38:33,634 - root - INFO - Starting HR Assistant...
+2025-07-15 10:38:33,638 - root - INFO - Starting HR Assistant...
+2025-07-15 10:38:33,845 - root - INFO - Starting HR Assistant...
+2025-07-15 10:38:34,141 - root - INFO - Starting HR Assistant...
+2025-07-15 10:38:34,246 - root - INFO - Starting HR Assistant...
+2025-07-15 10:38:34,636 - root - INFO - Starting HR Assistant...
+2025-07-15 10:38:34,838 - root - INFO - Starting HR Assistant...
+2025-07-15 10:38:35,133 - root - INFO - Starting HR Assistant...
+2025-07-15 10:38:35,235 - root - INFO - Starting HR Assistant...
+2025-07-15 10:38:35,348 - root - INFO - Starting HR Assistant...
+2025-07-15 10:38:35,435 - root - INFO - Starting HR Assistant...
+2025-07-15 10:38:35,642 - root - INFO - Starting HR Assistant...
+2025-07-15 10:38:35,733 - root - INFO - Starting HR Assistant...
+2025-07-15 10:38:36,031 - root - INFO - Starting HR Assistant...
+2025-07-15 10:38:36,142 - root - INFO - Starting HR Assistant...
+2025-07-15 10:38:36,149 - root - INFO - Starting HR Assistant...
+2025-07-15 10:38:36,343 - root - INFO - Starting HR Assistant...
+2025-07-15 10:38:37,449 - root - INFO - Configuration validated successfully
+2025-07-15 10:38:37,451 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:38:37,454 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:38:37,456 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:38:37,456 - root - INFO - Configuration validated successfully
+2025-07-15 10:38:37,529 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:38:37,532 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:38:37,535 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:38:37,545 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:38:37,548 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:38:37,855 - root - INFO - Configuration validated successfully
+2025-07-15 10:38:37,859 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:38:37,862 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:38:37,864 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:38:37,867 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:38:38,143 - root - INFO - Configuration validated successfully
+2025-07-15 10:38:38,146 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:38:38,148 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:38:38,149 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:38:38,152 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:38:38,154 - root - INFO - Configuration validated successfully
+2025-07-15 10:38:38,158 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:38:38,162 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:38:38,229 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:38:38,232 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:38:38,535 - root - INFO - Configuration validated successfully
+2025-07-15 10:38:38,540 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:38:38,543 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:38:38,546 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:38:38,548 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:38:38,563 - root - INFO - Configuration validated successfully
+2025-07-15 10:38:38,564 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:38:38,629 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:38:38,632 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:38:38,634 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:38:38,653 - root - INFO - Configuration validated successfully
+2025-07-15 10:38:38,652 - root - INFO - Configuration validated successfully
+2025-07-15 10:38:38,653 - root - INFO - Configuration validated successfully
+2025-07-15 10:38:38,655 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:38:38,730 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:38:38,658 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:38:38,659 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:38:38,734 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:38:38,740 - root - INFO - Configuration validated successfully
+2025-07-15 10:38:38,737 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:38:38,737 - root - INFO - Configuration validated successfully
+2025-07-15 10:38:38,741 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:38:38,744 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:38:38,746 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:38:38,748 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:38:38,750 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:38:38,831 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:38:38,833 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:38:38,835 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:38:38,837 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:38:38,838 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:38:38,839 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:38:38,847 - root - INFO - Configuration validated successfully
+2025-07-15 10:38:38,848 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:38:38,849 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:38:38,852 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:38:38,853 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:38:38,858 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:38:38,861 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:38:38,931 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:38:39,038 - root - INFO - Configuration validated successfully
+2025-07-15 10:38:39,046 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:38:39,048 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:38:39,050 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:38:39,054 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:38:39,155 - root - INFO - Configuration validated successfully
+2025-07-15 10:38:39,159 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:38:39,163 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:38:39,166 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:38:39,168 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:38:39,232 - root - INFO - Configuration validated successfully
+2025-07-15 10:38:39,239 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:38:39,241 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:38:39,244 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:38:39,246 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:38:39,348 - root - INFO - Configuration validated successfully
+2025-07-15 10:38:39,350 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:38:39,353 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:38:39,356 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:38:39,358 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:39:32,184 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:39:32,184 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:39:32,407 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:39:32,569 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:39:32,722 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:39:33,082 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:39:33,204 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:39:33,326 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:39:33,422 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:39:33,582 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:39:33,526 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:39:33,630 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:39:33,622 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:39:33,726 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:39:33,826 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:39:33,822 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:39:33,821 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:39:56,366 - root - INFO - Starting HR Assistant...
+2025-07-15 10:39:56,639 - root - INFO - Starting HR Assistant...
+2025-07-15 10:39:56,756 - root - INFO - Starting HR Assistant...
+2025-07-15 10:39:57,037 - root - INFO - Starting HR Assistant...
+2025-07-15 10:39:57,336 - root - INFO - Starting HR Assistant...
+2025-07-15 10:39:57,641 - root - INFO - Starting HR Assistant...
+2025-07-15 10:39:57,750 - root - INFO - Starting HR Assistant...
+2025-07-15 10:39:57,951 - root - INFO - Starting HR Assistant...
+2025-07-15 10:39:58,141 - root - INFO - Starting HR Assistant...
+2025-07-15 10:39:58,335 - root - INFO - Starting HR Assistant...
+2025-07-15 10:39:58,445 - root - INFO - Starting HR Assistant...
+2025-07-15 10:39:58,649 - root - INFO - Starting HR Assistant...
+2025-07-15 10:39:58,754 - root - INFO - Starting HR Assistant...
+2025-07-15 10:39:58,948 - root - INFO - Starting HR Assistant...
+2025-07-15 10:39:59,247 - root - INFO - Starting HR Assistant...
+2025-07-15 10:39:59,345 - root - INFO - Starting HR Assistant...
+2025-07-15 10:39:59,447 - root - INFO - Starting HR Assistant...
+2025-07-15 10:40:00,154 - root - INFO - Configuration validated successfully
+2025-07-15 10:40:00,157 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:40:00,160 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:40:00,163 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:40:00,166 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:40:00,839 - root - INFO - Configuration validated successfully
+2025-07-15 10:40:00,841 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:40:00,843 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:40:00,846 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:40:00,848 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:40:00,952 - root - INFO - Configuration validated successfully
+2025-07-15 10:40:00,955 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:40:00,958 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:40:00,962 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:40:00,963 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:40:01,139 - root - INFO - Configuration validated successfully
+2025-07-15 10:40:01,142 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:40:01,144 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:40:01,145 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:40:01,147 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:40:01,345 - root - INFO - Configuration validated successfully
+2025-07-15 10:40:01,347 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:40:01,349 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:40:01,353 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:40:01,355 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:40:01,465 - root - INFO - Configuration validated successfully
+2025-07-15 10:40:01,537 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:40:01,540 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:40:01,542 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:40:01,544 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:40:01,749 - root - INFO - Configuration validated successfully
+2025-07-15 10:40:01,751 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:40:01,754 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:40:01,757 - root - INFO - Configuration validated successfully
+2025-07-15 10:40:01,758 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:40:01,761 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:40:01,767 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:40:01,764 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:40:01,834 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:40:01,839 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:40:01,841 - root - INFO - Configuration validated successfully
+2025-07-15 10:40:01,842 - root - INFO - Configuration validated successfully
+2025-07-15 10:40:01,844 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:40:01,847 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:40:01,848 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:40:01,850 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:40:01,858 - root - INFO - Configuration validated successfully
+2025-07-15 10:40:01,857 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:40:01,859 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:40:01,860 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:40:01,936 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:40:01,940 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:40:01,942 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:40:01,946 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:40:01,949 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:40:02,038 - root - INFO - Configuration validated successfully
+2025-07-15 10:40:02,040 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:40:02,042 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:40:02,044 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:40:02,044 - root - INFO - Configuration validated successfully
+2025-07-15 10:40:02,049 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:40:02,050 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:40:02,054 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:40:02,063 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:40:02,066 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:40:02,243 - root - INFO - Configuration validated successfully
+2025-07-15 10:40:02,245 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:40:02,246 - root - INFO - Configuration validated successfully
+2025-07-15 10:40:02,247 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:40:02,249 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:40:02,250 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:40:02,253 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:40:02,255 - root - INFO - Configuration validated successfully
+2025-07-15 10:40:02,256 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:40:02,257 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:40:02,258 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:40:02,261 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:40:02,334 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:40:02,340 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:40:02,343 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:40:02,362 - root - INFO - Configuration validated successfully
+2025-07-15 10:40:02,365 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:40:02,367 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:40:02,370 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:40:02,434 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:40:46,600 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:40:47,691 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:40:47,696 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:40:48,825 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:40:48,900 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:40:48,997 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:40:49,099 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:40:49,127 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:40:49,127 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:40:49,413 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:40:49,425 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:40:49,431 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:40:49,525 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:40:49,527 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:40:51,982 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:40:52,181 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:40:52,577 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:41:03,402 - root - INFO - Starting HR Assistant...
+2025-07-15 10:41:03,576 - root - INFO - Starting HR Assistant...
+2025-07-15 10:41:03,885 - root - INFO - Starting HR Assistant...
+2025-07-15 10:41:04,182 - root - INFO - Starting HR Assistant...
+2025-07-15 10:41:04,293 - root - INFO - Starting HR Assistant...
+2025-07-15 10:41:04,593 - root - INFO - Starting HR Assistant...
+2025-07-15 10:41:04,982 - root - INFO - Starting HR Assistant...
+2025-07-15 10:41:05,081 - root - INFO - Starting HR Assistant...
+2025-07-15 10:41:05,381 - root - INFO - Starting HR Assistant...
+2025-07-15 10:41:05,475 - root - INFO - Starting HR Assistant...
+2025-07-15 10:41:05,782 - root - INFO - Starting HR Assistant...
+2025-07-15 10:41:05,985 - root - INFO - Starting HR Assistant...
+2025-07-15 10:41:06,280 - root - INFO - Starting HR Assistant...
+2025-07-15 10:41:06,380 - root - INFO - Starting HR Assistant...
+2025-07-15 10:41:06,588 - root - INFO - Starting HR Assistant...
+2025-07-15 10:41:06,881 - root - INFO - Starting HR Assistant...
+2025-07-15 10:41:07,083 - root - INFO - Configuration validated successfully
+2025-07-15 10:41:07,094 - root - INFO - Starting HR Assistant...
+2025-07-15 10:41:07,122 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:41:07,125 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:41:07,127 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:41:07,174 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:41:07,496 - root - INFO - Configuration validated successfully
+2025-07-15 10:41:07,499 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:41:07,507 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:41:07,509 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:41:07,574 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:41:08,192 - root - INFO - Configuration validated successfully
+2025-07-15 10:41:08,274 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:41:08,278 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:41:08,283 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:41:08,288 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:41:08,696 - root - INFO - Configuration validated successfully
+2025-07-15 10:41:08,699 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:41:08,702 - root - INFO - Configuration validated successfully
+2025-07-15 10:41:08,702 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:41:08,704 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:41:08,706 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:41:08,776 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:41:08,777 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:41:08,779 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:41:08,784 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:41:09,093 - root - INFO - Configuration validated successfully
+2025-07-15 10:41:09,174 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:41:09,179 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:41:09,187 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:41:09,191 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:41:09,575 - root - INFO - Configuration validated successfully
+2025-07-15 10:41:09,584 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:41:09,587 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:41:09,599 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:41:09,674 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:41:09,785 - root - INFO - Configuration validated successfully
+2025-07-15 10:41:09,874 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:41:09,879 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:41:09,881 - root - INFO - Configuration validated successfully
+2025-07-15 10:41:09,887 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:41:09,974 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:41:09,983 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:41:09,986 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:41:10,074 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:41:10,003 - root - INFO - Configuration validated successfully
+2025-07-15 10:41:10,078 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:41:10,076 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:41:10,081 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:41:10,085 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:41:10,088 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:41:10,192 - root - INFO - Configuration validated successfully
+2025-07-15 10:41:10,196 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:41:10,200 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:41:10,203 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:41:10,274 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:41:10,282 - root - INFO - Configuration validated successfully
+2025-07-15 10:41:10,284 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:41:10,289 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:41:10,299 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:41:10,379 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:41:10,479 - root - INFO - Configuration validated successfully
+2025-07-15 10:41:10,484 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:41:10,496 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:41:10,502 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:41:10,574 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:41:10,674 - root - INFO - Configuration validated successfully
+2025-07-15 10:41:10,676 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:41:10,679 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:41:10,681 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:41:10,683 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:41:10,775 - root - INFO - Configuration validated successfully
+2025-07-15 10:41:10,777 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:41:10,780 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:41:10,782 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:41:10,783 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:41:10,984 - root - INFO - Configuration validated successfully
+2025-07-15 10:41:10,999 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:41:11,075 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:41:11,080 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:41:11,084 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:41:11,391 - root - INFO - Configuration validated successfully
+2025-07-15 10:41:11,394 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:41:11,476 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:41:11,486 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:41:11,574 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:43:24,651 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:44:10,576 - root - INFO - Starting HR Assistant...
+2025-07-15 10:44:10,585 - root - INFO - Starting HR Assistant...
+2025-07-15 10:44:10,877 - root - INFO - Starting HR Assistant...
+2025-07-15 10:44:10,983 - root - INFO - Starting HR Assistant...
+2025-07-15 10:44:11,275 - root - INFO - Starting HR Assistant...
+2025-07-15 10:44:11,792 - root - INFO - Starting HR Assistant...
+2025-07-15 10:44:11,785 - root - INFO - Starting HR Assistant...
+2025-07-15 10:44:11,987 - root - INFO - Starting HR Assistant...
+2025-07-15 10:44:12,278 - root - INFO - Starting HR Assistant...
+2025-07-15 10:44:12,288 - root - INFO - Starting HR Assistant...
+2025-07-15 10:44:12,572 - root - INFO - Starting HR Assistant...
+2025-07-15 10:44:12,678 - root - INFO - Starting HR Assistant...
+2025-07-15 10:44:13,079 - root - INFO - Starting HR Assistant...
+2025-07-15 10:44:13,179 - root - INFO - Starting HR Assistant...
+2025-07-15 10:44:13,371 - root - INFO - Starting HR Assistant...
+2025-07-15 10:44:13,391 - root - INFO - Starting HR Assistant...
+2025-07-15 10:44:13,577 - root - INFO - Starting HR Assistant...
+2025-07-15 10:44:14,885 - root - INFO - Configuration validated successfully
+2025-07-15 10:44:14,889 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:44:14,892 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:44:14,967 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:44:14,970 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:44:15,198 - root - INFO - Configuration validated successfully
+2025-07-15 10:44:15,201 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:44:15,267 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:44:15,269 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:44:15,270 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:44:15,285 - root - INFO - Configuration validated successfully
+2025-07-15 10:44:15,288 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:44:15,296 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:44:15,300 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:44:15,302 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:44:15,367 - root - INFO - Configuration validated successfully
+2025-07-15 10:44:15,370 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:44:15,372 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:44:15,374 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:44:15,377 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:44:15,582 - root - INFO - Configuration validated successfully
+2025-07-15 10:44:15,667 - root - INFO - Configuration validated successfully
+2025-07-15 10:44:15,667 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:44:15,670 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:44:15,672 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:44:15,673 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:44:15,676 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:44:15,684 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:44:15,692 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:44:15,686 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:44:15,972 - root - INFO - Configuration validated successfully
+2025-07-15 10:44:15,975 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:44:15,978 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:44:15,981 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:44:15,983 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:44:15,983 - root - INFO - Configuration validated successfully
+2025-07-15 10:44:15,993 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:44:15,997 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:44:16,000 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:44:16,002 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:44:16,085 - root - INFO - Configuration validated successfully
+2025-07-15 10:44:16,088 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:44:16,090 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:44:16,094 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:44:16,096 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:44:16,181 - root - INFO - Configuration validated successfully
+2025-07-15 10:44:16,184 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:44:16,184 - root - INFO - Configuration validated successfully
+2025-07-15 10:44:16,190 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:44:16,187 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:44:16,196 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:44:16,200 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:44:16,267 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:44:16,273 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:44:16,276 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:44:16,370 - root - INFO - Configuration validated successfully
+2025-07-15 10:44:16,372 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:44:16,375 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:44:16,379 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:44:16,381 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:44:16,405 - root - INFO - Configuration validated successfully
+2025-07-15 10:44:16,467 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:44:16,469 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:44:16,472 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:44:16,476 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:44:16,571 - root - INFO - Configuration validated successfully
+2025-07-15 10:44:16,573 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:44:16,578 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:44:16,573 - root - INFO - Configuration validated successfully
+2025-07-15 10:44:16,580 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:44:16,581 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:44:16,582 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:44:16,585 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:44:16,587 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:44:16,589 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:44:16,870 - root - INFO - Configuration validated successfully
+2025-07-15 10:44:16,873 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:44:16,878 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:44:16,884 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:44:16,889 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:44:16,891 - root - INFO - Configuration validated successfully
+2025-07-15 10:44:16,967 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:44:16,980 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:44:16,989 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:44:17,067 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:46:00,252 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:46:00,257 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:46:00,263 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:46:14,629 - root - INFO - Starting HR Assistant...
+2025-07-15 10:46:14,630 - root - INFO - Starting HR Assistant...
+2025-07-15 10:46:15,025 - root - INFO - Starting HR Assistant...
+2025-07-15 10:46:15,227 - root - INFO - Starting HR Assistant...
+2025-07-15 10:46:15,512 - root - INFO - Starting HR Assistant...
+2025-07-15 10:46:15,710 - root - INFO - Starting HR Assistant...
+2025-07-15 10:46:15,819 - root - INFO - Starting HR Assistant...
+2025-07-15 10:46:16,013 - root - INFO - Starting HR Assistant...
+2025-07-15 10:46:16,310 - root - INFO - Starting HR Assistant...
+2025-07-15 10:46:16,318 - root - INFO - Starting HR Assistant...
+2025-07-15 10:46:16,719 - root - INFO - Starting HR Assistant...
+2025-07-15 10:46:16,727 - root - INFO - Starting HR Assistant...
+2025-07-15 10:46:16,932 - root - INFO - Starting HR Assistant...
+2025-07-15 10:46:17,214 - root - INFO - Starting HR Assistant...
+2025-07-15 10:46:17,314 - root - INFO - Starting HR Assistant...
+2025-07-15 10:46:17,525 - root - INFO - Starting HR Assistant...
+2025-07-15 10:46:17,716 - root - INFO - Starting HR Assistant...
+2025-07-15 10:46:18,540 - root - INFO - Configuration validated successfully
+2025-07-15 10:46:18,536 - root - INFO - Configuration validated successfully
+2025-07-15 10:46:18,610 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:46:18,611 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:46:18,613 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:46:18,615 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:46:18,616 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:46:18,618 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:46:18,620 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:46:18,621 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:46:19,421 - root - INFO - Configuration validated successfully
+2025-07-15 10:46:19,423 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:46:19,426 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:46:19,427 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:46:19,429 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:46:19,534 - root - INFO - Configuration validated successfully
+2025-07-15 10:46:19,537 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:46:19,541 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:46:19,543 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:46:19,544 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:46:19,738 - root - INFO - Configuration validated successfully
+2025-07-15 10:46:19,739 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:46:19,810 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:46:19,818 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:46:19,820 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:46:19,826 - root - INFO - Configuration validated successfully
+2025-07-15 10:46:19,829 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:46:19,831 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:46:19,832 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:46:19,834 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:46:20,119 - root - INFO - Configuration validated successfully
+2025-07-15 10:46:20,121 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:46:20,125 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:46:20,126 - root - INFO - Configuration validated successfully
+2025-07-15 10:46:20,129 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:46:20,131 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:46:20,135 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:46:20,138 - root - INFO - Configuration validated successfully
+2025-07-15 10:46:20,138 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:46:20,210 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:46:20,212 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:46:20,215 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:46:20,217 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:46:20,219 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:46:20,222 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:46:20,231 - root - INFO - Configuration validated successfully
+2025-07-15 10:46:20,235 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:46:20,239 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:46:20,243 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:46:20,310 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:46:20,324 - root - INFO - Configuration validated successfully
+2025-07-15 10:46:20,325 - root - INFO - Configuration validated successfully
+2025-07-15 10:46:20,328 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:46:20,330 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:46:20,333 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:46:20,334 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:46:20,335 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:46:20,336 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:46:20,337 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:46:20,338 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:46:20,442 - root - INFO - Configuration validated successfully
+2025-07-15 10:46:20,445 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:46:20,448 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:46:20,451 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:46:20,512 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:46:20,615 - root - INFO - Configuration validated successfully
+2025-07-15 10:46:20,617 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:46:20,621 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:46:20,623 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:46:20,623 - root - INFO - Configuration validated successfully
+2025-07-15 10:46:20,624 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:46:20,627 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:46:20,631 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:46:20,634 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:46:20,641 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:46:20,730 - root - INFO - Configuration validated successfully
+2025-07-15 10:46:20,732 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:46:20,734 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:46:20,809 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:46:20,813 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:46:20,824 - root - INFO - Configuration validated successfully
+2025-07-15 10:46:20,826 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:46:20,829 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:46:20,833 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:46:20,909 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:47:04,966 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:47:05,236 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:47:05,855 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:47:06,111 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:47:06,296 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:47:06,510 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:47:06,807 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:47:06,914 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:47:07,009 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:47:07,009 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:47:07,109 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:47:07,109 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:47:07,312 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:47:07,411 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:47:07,510 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:47:07,510 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:47:07,510 - root - ERROR - Startup failed: Could not load model Qdrant/bm25 from any source.
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 245, in get_hr_assistant_chain
+    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+  File "/opt/venv/lib/python3.10/site-packages/langchain_qdrant/fastembed_sparse.py", line 51, in __init__
+    self._model = SparseTextEmbedding(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/sparse_text_embedding.py", line 77, in __init__
+    self.model = EMBEDDING_MODEL_TYPE(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/sparse/bm25.py", line 119, in __init__
+    self._model_dir = self.download_model(
+  File "/opt/venv/lib/python3.10/site-packages/fastembed/common/model_management.py", line 458, in download_model
+    raise ValueError(f"Could not load model {model.model} from any source.")
+ValueError: Could not load model Qdrant/bm25 from any source.
+2025-07-15 10:47:22,536 - root - INFO - Starting HR Assistant...
+2025-07-15 10:47:22,671 - root - INFO - Starting HR Assistant...
+2025-07-15 10:47:23,050 - root - INFO - Starting HR Assistant...
+2025-07-15 10:47:23,246 - root - INFO - Starting HR Assistant...
+2025-07-15 10:47:23,453 - root - INFO - Starting HR Assistant...
+2025-07-15 10:47:23,649 - root - INFO - Starting HR Assistant...
+2025-07-15 10:47:23,854 - root - INFO - Starting HR Assistant...
+2025-07-15 10:47:24,055 - root - INFO - Starting HR Assistant...
+2025-07-15 10:47:24,251 - root - INFO - Starting HR Assistant...
+2025-07-15 10:47:24,348 - root - INFO - Starting HR Assistant...
+2025-07-15 10:47:24,748 - root - INFO - Starting HR Assistant...
+2025-07-15 10:47:24,840 - root - INFO - Starting HR Assistant...
+2025-07-15 10:47:25,049 - root - INFO - Starting HR Assistant...
+2025-07-15 10:47:25,153 - root - INFO - Starting HR Assistant...
+2025-07-15 10:47:25,348 - root - INFO - Starting HR Assistant...
+2025-07-15 10:47:25,450 - root - INFO - Starting HR Assistant...
+2025-07-15 10:47:25,646 - root - INFO - Starting HR Assistant...
+2025-07-15 10:47:26,039 - root - INFO - Configuration validated successfully
+2025-07-15 10:47:26,048 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:47:26,055 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:47:26,056 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:47:26,060 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:47:26,550 - root - INFO - Configuration validated successfully
+2025-07-15 10:47:26,554 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:47:26,557 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:47:26,560 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:47:26,563 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:47:27,139 - root - INFO - Configuration validated successfully
+2025-07-15 10:47:27,148 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:47:27,152 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:47:27,155 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:47:27,162 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:47:27,439 - root - INFO - Configuration validated successfully
+2025-07-15 10:47:27,446 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:47:27,448 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:47:27,452 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:47:27,455 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:47:27,467 - root - INFO - Configuration validated successfully
+2025-07-15 10:47:27,534 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:47:27,538 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:47:27,540 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:47:27,543 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:47:27,634 - root - INFO - Configuration validated successfully
+2025-07-15 10:47:27,638 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:47:27,641 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:47:27,643 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:47:27,647 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:47:27,843 - root - INFO - Configuration validated successfully
+2025-07-15 10:47:27,849 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:47:27,853 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:47:27,855 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:47:27,859 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:47:28,142 - root - INFO - Configuration validated successfully
+2025-07-15 10:47:28,145 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:47:28,149 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:47:28,152 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:47:28,155 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:47:28,163 - root - INFO - Configuration validated successfully
+2025-07-15 10:47:28,164 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:47:28,166 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:47:28,168 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:47:28,174 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:47:28,236 - root - INFO - Configuration validated successfully
+2025-07-15 10:47:28,238 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:47:28,240 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:47:28,244 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:47:28,252 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:47:28,356 - root - INFO - Configuration validated successfully
+2025-07-15 10:47:28,360 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:47:28,363 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:47:28,364 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:47:28,434 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:47:28,461 - root - INFO - Configuration validated successfully
+2025-07-15 10:47:28,464 - root - INFO - Configuration validated successfully
+2025-07-15 10:47:28,465 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:47:28,469 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:47:28,535 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:47:28,537 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:47:28,540 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:47:28,542 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:47:28,544 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:47:28,546 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:47:28,562 - root - INFO - Configuration validated successfully
+2025-07-15 10:47:28,563 - root - INFO - Configuration validated successfully
+2025-07-15 10:47:28,565 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:47:28,569 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:47:28,635 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:47:28,638 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:47:28,646 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:47:28,650 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:47:28,652 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:47:28,655 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:47:28,738 - root - INFO - Configuration validated successfully
+2025-07-15 10:47:28,740 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:47:28,743 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:47:28,745 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:47:28,746 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:47:28,834 - root - INFO - Configuration validated successfully
+2025-07-15 10:47:28,838 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:47:28,840 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:47:28,843 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:47:28,844 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:49:05,580 - root - ERROR - Startup failed: [Errno -5] No address associated with hostname
+Traceback (most recent call last):
+  File "/opt/venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/opt/venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/opt/venv/lib/python3.10/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/opt/venv/lib/python3.10/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+  File "/opt/venv/lib/python3.10/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/opt/venv/lib/python3.10/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/opt/venv/lib/python3.10/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/opt/venv/lib/python3.10/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/usr/local/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/venv/lib/python3.10/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno -5] No address associated with hostname
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/venv/lib/python3.10/site-packages/qdrant_client/http/api_client.py", line 134, in send_inner
+    response = self._client.send(request)
+  File "/opt/venv/lib/python3.10/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+  File "/opt/venv/lib/python3.10/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+  File "/opt/venv/lib/python3.10/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/opt/venv/lib/python3.10/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/opt/venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/usr/local/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/venv/lib/python3.10/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno -5] No address associated with hostname
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/main.py", line 126, in startup_event
+    qa_chain = get_cached_hr_assistant_chain(
+  File "/app/ingestion_retrieval/retrieval.py", line 222, in get_cached_hr_assistant_chain
+    return get_hr_assistant_chain(qdrant_url, qdrant_api, collection_name)
+  File "/app/ingestion_retrieval/retrieval.py", line 252, in get_hr_assistant_chain
+    collection_info = _qdrant_client.get_collection(collection_name)
+  File "/opt/venv/lib/python3.10/site-packages/qdrant_client/qdrant_client.py", line 2223, in get_collection
+    return self._client.get_collection(collection_name=collection_name, **kwargs)
+  File "/opt/venv/lib/python3.10/site-packages/qdrant_client/qdrant_remote.py", line 2584, in get_collection
+    result: Optional[types.CollectionInfo] = self.http.collections_api.get_collection(
+  File "/opt/venv/lib/python3.10/site-packages/qdrant_client/http/api/collections_api.py", line 320, in get_collection
+    return self._build_for_get_collection(
+  File "/opt/venv/lib/python3.10/site-packages/qdrant_client/http/api/collections_api.py", line 144, in _build_for_get_collection
+    return self.api_client.request(
+  File "/opt/venv/lib/python3.10/site-packages/qdrant_client/http/api_client.py", line 95, in request
+    return self.send(request, type_)
+  File "/opt/venv/lib/python3.10/site-packages/qdrant_client/http/api_client.py", line 112, in send
+    response = self.middleware(request, self.send_inner)
+  File "/opt/venv/lib/python3.10/site-packages/qdrant_client/http/api_client.py", line 250, in __call__
+    return call_next(request)
+  File "/opt/venv/lib/python3.10/site-packages/qdrant_client/http/api_client.py", line 136, in send_inner
+    raise ResponseHandlingException(e)
+qdrant_client.http.exceptions.ResponseHandlingException: [Errno -5] No address associated with hostname
+2025-07-15 10:49:29,336 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:49:32,877 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:49:33,590 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:49:35,025 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:49:35,048 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:49:35,246 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:49:35,304 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:49:35,418 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:49:35,963 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:49:36,152 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:49:36,358 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:49:36,768 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:49:36,768 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:49:36,771 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:49:36,772 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:49:36,774 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:49:37,176 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:49:37,176 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:49:37,685 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:49:37,888 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:49:38,196 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:49:38,404 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:49:53,385 - root - INFO - Starting HR Assistant...
+2025-07-15 10:49:53,478 - root - INFO - Starting HR Assistant...
+2025-07-15 10:49:53,487 - root - INFO - Starting HR Assistant...
+2025-07-15 10:49:53,685 - root - INFO - Starting HR Assistant...
+2025-07-15 10:49:54,079 - root - INFO - Starting HR Assistant...
+2025-07-15 10:49:54,191 - root - INFO - Starting HR Assistant...
+2025-07-15 10:49:54,296 - root - INFO - Starting HR Assistant...
+2025-07-15 10:49:54,486 - root - INFO - Starting HR Assistant...
+2025-07-15 10:49:54,588 - root - INFO - Starting HR Assistant...
+2025-07-15 10:49:54,994 - root - INFO - Starting HR Assistant...
+2025-07-15 10:49:55,187 - root - INFO - Starting HR Assistant...
+2025-07-15 10:49:55,292 - root - INFO - Starting HR Assistant...
+2025-07-15 10:49:55,295 - root - INFO - Starting HR Assistant...
+2025-07-15 10:49:55,483 - root - INFO - Starting HR Assistant...
+2025-07-15 10:49:55,679 - root - INFO - Starting HR Assistant...
+2025-07-15 10:49:56,000 - root - INFO - Starting HR Assistant...
+2025-07-15 10:49:56,304 - root - INFO - Starting HR Assistant...
+2025-07-15 10:49:57,578 - root - INFO - Configuration validated successfully
+2025-07-15 10:49:57,581 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:49:57,584 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:49:57,587 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:49:57,591 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:49:57,604 - root - INFO - Configuration validated successfully
+2025-07-15 10:49:57,607 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:49:57,609 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:49:57,674 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:49:57,677 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:49:57,875 - root - INFO - Configuration validated successfully
+2025-07-15 10:49:57,877 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:49:57,879 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:49:57,882 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:49:57,883 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:49:58,005 - root - INFO - Configuration validated successfully
+2025-07-15 10:49:58,007 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:49:58,009 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:49:58,076 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:49:58,078 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:49:58,106 - root - INFO - Configuration validated successfully
+2025-07-15 10:49:58,109 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:49:58,112 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:49:58,113 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:49:58,176 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:49:58,375 - root - INFO - Configuration validated successfully
+2025-07-15 10:49:58,375 - root - INFO - Configuration validated successfully
+2025-07-15 10:49:58,378 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:49:58,380 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:49:58,383 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:49:58,391 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:49:58,394 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:49:58,392 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:49:58,400 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:49:58,399 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:49:58,492 - root - INFO - Configuration validated successfully
+2025-07-15 10:49:58,494 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:49:58,504 - root - INFO - Configuration validated successfully
+2025-07-15 10:49:58,508 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:49:58,504 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:49:58,575 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:49:58,579 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:49:58,581 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:49:58,584 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:49:58,589 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:49:58,700 - root - INFO - Configuration validated successfully
+2025-07-15 10:49:58,707 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:49:58,775 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:49:58,777 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:49:58,779 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:49:58,795 - root - INFO - Configuration validated successfully
+2025-07-15 10:49:58,797 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:49:58,800 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:49:58,803 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:49:58,808 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:49:58,810 - root - INFO - Configuration validated successfully
+2025-07-15 10:49:58,878 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:49:58,881 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:49:58,883 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:49:58,890 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:49:58,998 - root - INFO - Configuration validated successfully
+2025-07-15 10:49:59,000 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:49:59,003 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:49:59,005 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:49:59,074 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:49:59,097 - root - INFO - Configuration validated successfully
+2025-07-15 10:49:59,099 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:49:59,105 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:49:59,107 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:49:59,109 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:49:59,175 - root - INFO - Configuration validated successfully
+2025-07-15 10:49:59,179 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:49:59,181 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:49:59,183 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:49:59,185 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:49:59,277 - root - INFO - Configuration validated successfully
+2025-07-15 10:49:59,279 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:49:59,281 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:49:59,282 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:49:59,284 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:49:59,375 - root - INFO - Configuration validated successfully
+2025-07-15 10:49:59,379 - root - INFO - Pre-warming the model with optimized RAG pipeline...
+2025-07-15 10:49:59,397 - ingestion_retrieval.retrieval - INFO - Invalidating all caches due to configuration change
+2025-07-15 10:49:59,474 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] _llm_cache set to None; next request will reload LLM with latest config
+2025-07-15 10:49:59,482 - ingestion_retrieval.retrieval - INFO - Initializing hybrid retriever...
+2025-07-15 10:50:22,105 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:50:22,750 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:50:22,751 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:50:22,966 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:50:23,004 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:50:23,471 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:50:23,647 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:50:23,776 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:50:23,818 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:50:23,971 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:50:23,992 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:50:24,106 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:50:24,185 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:50:24,186 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:50:24,904 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:50:24,906 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:50:25,311 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-07-15 10:50:26,730 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:26,948 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:27,330 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:27,331 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:27,493 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:27,516 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:27,528 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:27,676 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:27,685 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:27,928 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:28,132 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:28,389 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:28,392 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:28,425 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:28,425 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:28,730 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:28,730 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:28,730 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:28,730 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:28,730 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:28,938 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:28,938 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:28,938 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:28,938 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:28,938 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:29,110 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:29,116 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:29,116 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:29,511 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:29,511 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:29,701 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:29,701 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:29,921 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:30,172 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:31,389 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:31,409 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:31,559 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:31,739 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:31,746 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:31,801 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:31,885 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:31,885 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:31,886 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:31,885 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:31,885 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:31,885 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:31,895 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:31,901 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:31,902 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:31,976 - ingestion_retrieval.retrieval - INFO - Using Google embedding model: models/embedding-001
+2025-07-15 10:50:31,979 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:31,979 - httpx - INFO - HTTP Request: GET https://17afb374-9be3-4555-8e22-0dca22560995.eu-west-1-0.aws.cloud.qdrant.io:6333/collections/HRDOCS "HTTP/1.1 200 OK"
+2025-07-15 10:50:31,989 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] Loading LLM due to cache miss or invalidation...
+2025-07-15 10:50:32,471 - ingestion_retrieval.retrieval - INFO - Using Google embedding model: models/embedding-001
+2025-07-15 10:50:32,483 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] Loading LLM due to cache miss or invalidation...
+2025-07-15 10:50:33,203 - ingestion_retrieval.retrieval - INFO - Using Google embedding model: models/embedding-001
+2025-07-15 10:50:33,272 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] Loading LLM due to cache miss or invalidation...
+2025-07-15 10:50:34,380 - ingestion_retrieval.retrieval - INFO - Using Google embedding model: models/embedding-001
+2025-07-15 10:50:34,389 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] Loading LLM due to cache miss or invalidation...
+2025-07-15 10:50:34,396 - ingestion_retrieval.retrieval - INFO - Using Google embedding model: models/embedding-001
+2025-07-15 10:50:34,472 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] Loading LLM due to cache miss or invalidation...
+2025-07-15 10:50:35,285 - ingestion_retrieval.retrieval - INFO - Using Google embedding model: models/embedding-001
+2025-07-15 10:50:35,294 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] Loading LLM due to cache miss or invalidation...
+2025-07-15 10:50:35,398 - ingestion_retrieval.retrieval - INFO - Using Google embedding model: models/embedding-001
+2025-07-15 10:50:35,405 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] Loading LLM due to cache miss or invalidation...
+2025-07-15 10:50:35,484 - ingestion_retrieval.retrieval - INFO - Using Google embedding model: models/embedding-001
+2025-07-15 10:50:35,484 - ingestion_retrieval.retrieval - INFO - Using Google embedding model: models/embedding-001
+2025-07-15 10:50:35,492 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] Loading LLM due to cache miss or invalidation...
+2025-07-15 10:50:35,494 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] Loading LLM due to cache miss or invalidation...
+2025-07-15 10:50:35,499 - ingestion_retrieval.retrieval - INFO - Using Google embedding model: models/embedding-001
+2025-07-15 10:50:35,576 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] Loading LLM due to cache miss or invalidation...
+2025-07-15 10:50:35,579 - ingestion_retrieval.retrieval - INFO - Using Google embedding model: models/embedding-001
+2025-07-15 10:50:35,587 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] Loading LLM due to cache miss or invalidation...
+2025-07-15 10:50:35,589 - ingestion_retrieval.retrieval - INFO - Using Google embedding model: models/embedding-001
+2025-07-15 10:50:35,598 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] Loading LLM due to cache miss or invalidation...
+2025-07-15 10:50:35,676 - ingestion_retrieval.retrieval - INFO - Using Google embedding model: models/embedding-001
+2025-07-15 10:50:35,683 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] Loading LLM due to cache miss or invalidation...
+2025-07-15 10:50:35,691 - ingestion_retrieval.retrieval - INFO - Using Google embedding model: models/embedding-001
+2025-07-15 10:50:35,692 - ingestion_retrieval.retrieval - INFO - Using Google embedding model: models/embedding-001
+2025-07-15 10:50:35,700 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] Loading LLM due to cache miss or invalidation...
+2025-07-15 10:50:35,701 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] Loading LLM due to cache miss or invalidation...
+2025-07-15 10:50:35,780 - ingestion_retrieval.retrieval - INFO - Using Google embedding model: models/embedding-001
+2025-07-15 10:50:35,782 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 10:50:35,783 - ingestion_retrieval.retrieval - INFO - Using Google embedding model: models/embedding-001
+2025-07-15 10:50:35,786 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 10:50:35,788 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] Loading LLM due to cache miss or invalidation...
+2025-07-15 10:50:35,789 - root - INFO - Loading groq LLM...
+2025-07-15 10:50:35,793 - ingestion_retrieval.retrieval - INFO - [LLM CACHE] Loading LLM due to cache miss or invalidation...
+2025-07-15 10:50:35,905 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 10:50:35,971 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 10:50:35,974 - root - INFO - Loading groq LLM...
+2025-07-15 10:50:37,171 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 10:50:37,174 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 10:50:37,177 - root - INFO - Loading groq LLM...
+2025-07-15 10:50:38,577 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 10:50:38,582 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 10:50:38,589 - root - INFO - Loading groq LLM...
+2025-07-15 10:50:39,579 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 10:50:39,585 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 10:50:39,588 - root - INFO - Loading groq LLM...
+2025-07-15 10:50:40,384 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 10:50:40,471 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 10:50:40,483 - root - INFO - Loading groq LLM...
+2025-07-15 10:50:40,778 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 10:50:40,783 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 10:50:40,785 - root - INFO - Loading groq LLM...
+2025-07-15 10:50:40,874 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 10:50:40,885 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 10:50:41,171 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 10:50:41,174 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 10:50:41,176 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 10:50:41,179 - root - INFO - Loading groq LLM...
+2025-07-15 10:50:41,188 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 10:50:41,272 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 10:50:41,286 - root - INFO - Loading groq LLM...
+2025-07-15 10:50:41,284 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 10:50:41,375 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 10:50:41,378 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 10:50:41,375 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 10:50:41,382 - root - INFO - Loading groq LLM...
+2025-07-15 10:50:41,472 - ingestion_retrieval.retrieval - INFO - LLM warm-up completed successfully
+2025-07-15 10:50:41,383 - root - INFO - Loading groq LLM...
+2025-07-15 10:50:41,483 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 10:50:41,484 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 10:50:41,472 - ingestion_retrieval.retrieval - INFO - LLM warm-up completed successfully
+2025-07-15 10:50:41,576 - root - INFO - Skipping pipeline test during startup (will be tested on first query)
+2025-07-15 10:50:41,480 - ingestion_retrieval.retrieval - INFO - LLM warm-up completed successfully
+2025-07-15 10:50:41,485 - root - INFO - Loading groq LLM...
+2025-07-15 10:50:41,577 - root - INFO - Skipping pipeline test during startup (will be tested on first query)
+2025-07-15 10:50:41,587 - root - INFO - HR Assistant started successfully
+2025-07-15 10:50:41,581 - root - INFO - HR Assistant started successfully
+2025-07-15 10:50:41,680 - root - INFO - Skipping pipeline test during startup (will be tested on first query)
+2025-07-15 10:50:41,686 - root - INFO - HR Assistant started successfully
+2025-07-15 10:50:42,079 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 10:50:42,079 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 10:50:42,083 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 10:50:42,083 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 10:50:42,174 - root - INFO - Loading groq LLM...
+2025-07-15 10:50:42,083 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 10:50:42,086 - root - INFO - Loading groq LLM...
+2025-07-15 10:50:42,181 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 10:50:42,276 - root - INFO - Loading groq LLM...
+2025-07-15 10:50:42,381 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 10:50:42,383 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 10:50:42,382 - root - INFO - [LLM CONFIG] model_priority=1, groq_api_key=set, google_api_key=set
+2025-07-15 10:50:42,472 - root - INFO - [LLM CONFIG] Selecting Groq as provider
+2025-07-15 10:50:42,385 - root - INFO - Loading groq LLM...
+2025-07-15 10:50:42,571 - root - INFO - Loading groq LLM...
+2025-07-15 10:50:43,174 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 10:50:43,974 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 10:50:43,979 - ingestion_retrieval.retrieval - INFO - LLM warm-up completed successfully
+2025-07-15 10:50:44,077 - root - INFO - Skipping pipeline test during startup (will be tested on first query)
+2025-07-15 10:50:44,164 - root - INFO - HR Assistant started successfully
+2025-07-15 10:50:44,264 - ingestion_retrieval.retrieval - INFO - LLM warm-up completed successfully
+2025-07-15 10:50:44,374 - root - INFO - Skipping pipeline test during startup (will be tested on first query)
+2025-07-15 10:50:44,376 - root - INFO - HR Assistant started successfully
+2025-07-15 10:50:45,268 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 10:50:45,465 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 10:50:45,676 - ingestion_retrieval.retrieval - INFO - LLM warm-up completed successfully
+2025-07-15 10:50:45,767 - root - INFO - Skipping pipeline test during startup (will be tested on first query)
+2025-07-15 10:50:45,770 - root - INFO - HR Assistant started successfully
+2025-07-15 10:50:45,781 - ingestion_retrieval.retrieval - INFO - LLM warm-up completed successfully
+2025-07-15 10:50:45,867 - root - INFO - Skipping pipeline test during startup (will be tested on first query)
+2025-07-15 10:50:45,869 - root - INFO - HR Assistant started successfully
+2025-07-15 10:50:45,886 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 10:50:45,917 - ingestion_retrieval.retrieval - INFO - LLM warm-up completed successfully
+2025-07-15 10:50:45,924 - root - INFO - Skipping pipeline test during startup (will be tested on first query)
+2025-07-15 10:50:45,962 - root - INFO - HR Assistant started successfully
+2025-07-15 10:50:46,007 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 10:50:46,035 - ingestion_retrieval.retrieval - INFO - LLM warm-up completed successfully
+2025-07-15 10:50:46,042 - root - INFO - Skipping pipeline test during startup (will be tested on first query)
+2025-07-15 10:50:46,043 - root - INFO - HR Assistant started successfully
+2025-07-15 10:50:46,104 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 10:50:46,133 - ingestion_retrieval.retrieval - INFO - LLM warm-up completed successfully
+2025-07-15 10:50:46,143 - root - INFO - Skipping pipeline test during startup (will be tested on first query)
+2025-07-15 10:50:46,144 - root - INFO - HR Assistant started successfully
+2025-07-15 10:50:46,210 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 10:50:46,236 - ingestion_retrieval.retrieval - INFO - LLM warm-up completed successfully
+2025-07-15 10:50:46,243 - root - INFO - Skipping pipeline test during startup (will be tested on first query)
+2025-07-15 10:50:46,245 - root - INFO - HR Assistant started successfully
+2025-07-15 10:50:46,304 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 10:50:46,304 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 10:50:46,328 - ingestion_retrieval.retrieval - INFO - LLM warm-up completed successfully
+2025-07-15 10:50:46,331 - ingestion_retrieval.retrieval - INFO - LLM warm-up completed successfully
+2025-07-15 10:50:46,335 - root - INFO - Skipping pipeline test during startup (will be tested on first query)
+2025-07-15 10:50:46,336 - root - INFO - HR Assistant started successfully
+2025-07-15 10:50:46,337 - root - INFO - Skipping pipeline test during startup (will be tested on first query)
+2025-07-15 10:50:46,339 - root - INFO - HR Assistant started successfully
+2025-07-15 10:50:46,402 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 10:50:46,429 - ingestion_retrieval.retrieval - INFO - LLM warm-up completed successfully
+2025-07-15 10:50:46,437 - root - INFO - Skipping pipeline test during startup (will be tested on first query)
+2025-07-15 10:50:46,438 - root - INFO - HR Assistant started successfully
+2025-07-15 10:50:46,571 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 10:50:46,571 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 10:50:46,571 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 10:50:46,600 - ingestion_retrieval.retrieval - INFO - LLM warm-up completed successfully
+2025-07-15 10:50:46,600 - ingestion_retrieval.retrieval - INFO - LLM warm-up completed successfully
+2025-07-15 10:50:46,602 - ingestion_retrieval.retrieval - INFO - LLM warm-up completed successfully
+2025-07-15 10:50:46,606 - root - INFO - Skipping pipeline test during startup (will be tested on first query)
+2025-07-15 10:50:46,606 - root - INFO - Skipping pipeline test during startup (will be tested on first query)
+2025-07-15 10:50:46,607 - root - INFO - HR Assistant started successfully
+2025-07-15 10:50:46,607 - root - INFO - Skipping pipeline test during startup (will be tested on first query)
+2025-07-15 10:50:46,607 - root - INFO - HR Assistant started successfully
+2025-07-15 10:50:46,609 - root - INFO - HR Assistant started successfully

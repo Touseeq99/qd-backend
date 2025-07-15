@@ -16,6 +16,7 @@ services:
       - ./uploaded_folders:/app/uploaded_folders
       - ./data:/app/data
       - ./logs:/app/logs
+      - ./static:/app/static
       - /dev/shm:/dev/shm
       - ./.env:/app/.env
     environment:
