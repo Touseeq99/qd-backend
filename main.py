@@ -51,7 +51,6 @@ logger = setup_logging()
 
 # Load environment variables
 load_dotenv()
-print('ENV:', dict(os.environ))
 
 # Import configuration and admin interface
 from config import get_config, validate_config
@@ -439,13 +438,13 @@ async def ask_hr(request: QueryRequest):
         start_process = time.time()
         # Use .invoke() instead of direct call
         result = qa_chain.invoke({"input": request.question})
-        print(result)
         logger.info(f"Question processing: {time.time() - start_process:.2f}s")
 
         # Extract document names from context if available
-        sources = []
+        sources = [] 
         context = result.get("context")
-        if context:
+        print(context)
+        if context: 
             import os
             # context may be a list of Document objects or dicts
             for doc in context:

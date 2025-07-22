@@ -40,3 +40,4 @@ python-multipart
 psutil
 langchain-text-splitters
 fastembed-gpu
+sentence-transformers

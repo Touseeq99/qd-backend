@@ -34,35 +34,47 @@ class DatabaseConfig:
 @dataclass
 class LLMConfig:
     """Language model configuration"""
-    # Primary LLM (Groq)
-    groq_api_key: Optional[str] = field(default_factory=lambda: get_env_value("GROQ_API_KEY", ""))
-    groq_model: str = field(default_factory=lambda: get_env_value("GROQ_MODEL", "llama3-70b-8192"))
+    # Primary LLM (OpenRouter)
+    openrouter_api_key: Optional[str] = field(default_factory=lambda: get_env_value("OPENROUTER_API_KEY", ""))
+    openrouter_model: str = field(default_factory=lambda: get_env_value("OPENROUTER_MODEL", "meta-llama/llama-3.1-70b-instruct:free"))
     
     # Fallback LLM (Google)
     google_api_key: Optional[str] = field(default_factory=lambda: get_env_value("GOOGLE_API_KEY", ""))
     google_model: str = field(default_factory=lambda: get_env_value("GOOGLE_MODEL", "gemma-3-12b-it"))
     
+    # Legacy LLM (Groq) - Kept for backward compatibility
+    groq_api_key: Optional[str] = field(default_factory=lambda: get_env_value("GROQ_API_KEY", ""))
+    groq_model: str = field(default_factory=lambda: get_env_value("GROQ_MODEL", "llama3-70b-8192"))
 
-    # Model selection priority (1=Groq, 2=Google, 3=OpenAI)
+    # Model selection priority (1=OpenRouter, 2=Google, 3=Groq)
     model_priority: int = field(default_factory=lambda: int(get_env_value("MODEL_PRIORITY", "1")))
-    temperature: float = field(default_factory=lambda: float(get_env_value("TEMPERATURE", "0.1")))
+    temperature: float = field(default_factory=lambda: float(get_env_value("TEMPERATURE", "0.8")))
 
 @dataclass
 class EmbeddingConfig:
     """Embedding model configuration"""
-    # Primary embedding (Google)
-    google_api_key: Optional[str] = field(default_factory=lambda: get_env_value("GOOGLE_API_KEY", ""))
-    google_model: str = field(default_factory=lambda: get_env_value("EMBEDDING_MODEL", "models/embedding-001")) 
+    # Primary embedding (SentenceTransformer)
+    sentence_transformer_model: str = field(
+        default_factory=lambda: get_env_value(
+            "SENTENCE_TRANSFORMER_MODEL", 
+            "BAAI/bge-base-en-v1.5"
+        )
+    )
     
-    # Fallback embedding (Cohere)
-    cohere_api_key: Optional[str] = field(default_factory=lambda: get_env_value("COHERE_API_KEY", ""))
-    cohere_model: str = field(default_factory=lambda: get_env_value("COHERE_EMBEDDING_MODEL", "embed-english-v3.0"))
+    # Google embeddings as fallback (optional)
+    google_api_key: Optional[str] = field(default_factory=lambda: get_env_value("GOOGLE_API_KEY", ""))
+    google_model: str = field(
+        default_factory=lambda: get_env_value(
+            "GOOGLE_EMBEDDING_MODEL", 
+            "models/embedding-001"
+        )
+    )
 
 @dataclass 
-class ServerConfig:
+class ServerConfig: 
     """Server configuration"""
     port: int = field(default_factory=lambda: int(get_env_value("PORT", "8000")))
-    workers: int = field(default_factory=lambda: int(get_env_value("WORKERS", "4")))
+    workers: int = field(default_factory=lambda: int(get_env_value("WORKERS", "4"))) 
     timeout: int = field(default_factory=lambda: int(get_env_value("TIMEOUT", "120")))
     keep_alive: int = field(default_factory=lambda: int(get_env_value("KEEP_ALIVE", "30")))
     log_level: str = field(default_factory=lambda: get_env_value("LOG_LEVEL", "INFO"))
@@ -141,15 +153,22 @@ class Config:
         return errors
     
     def get_active_llm_config(self) -> dict:
-        logging.info(f"[LLM CONFIG] model_priority={self.llm.model_priority}, groq_api_key={'set' if self.llm.groq_api_key else 'unset'}, google_api_key={'set' if self.llm.google_api_key else 'unset'}")
-        if self.llm.model_priority == 1 and self.llm.groq_api_key:
-            logging.info("[LLM CONFIG] Selecting Groq as provider")
+        logging.info(
+            f"[LLM CONFIG] model_priority={self.llm.model_priority}, "
+            f"openrouter_api_key={'set' if self.llm.openrouter_api_key else 'unset'}, "
+            f"google_api_key={'set' if self.llm.google_api_key else 'unset'}, "
+            f"groq_api_key={'set' if self.llm.groq_api_key else 'unset'}"
+        )
+        
+        # Priority 1: OpenRouter
+        if self.llm.model_priority == 1 and self.llm.openrouter_api_key:
+            logging.info("[LLM CONFIG] Selecting OpenRouter as provider")
             return {
-                "provider": "groq",
-                "api_key": self.llm.groq_api_key,
-                "model": self.llm.groq_model,
-                "temperature": self.llm.temperature
+                "provider": "openrouter",
+                "api_key": self.llm.openrouter_api_key,
+                "model": self.llm.openrouter_model,
             }
+        # Priority 2: Google
         elif self.llm.model_priority == 2 and self.llm.google_api_key:
             logging.info("[LLM CONFIG] Selecting Google as provider")
             return {
@@ -158,19 +177,41 @@ class Config:
                 "model": self.llm.google_model,
                 "temperature": self.llm.temperature
             }
-        else:
-            # Fallback to Google if available
-            if self.llm.google_api_key:
-                logging.info("[LLM CONFIG] Fallback: Selecting Google as provider")
-                return {
-                    "provider": "google",
-                    "api_key": self.llm.google_api_key,
-                    "model": self.llm.google_model,
+        # Priority 3: Groq (legacy)
+        elif self.llm.model_priority == 3 and self.llm.groq_api_key:
+            logging.info("[LLM CONFIG] Selecting Groq as provider")
+            return {
+                "provider": "groq",
+                "api_key": self.llm.groq_api_key,
+                "model": self.llm.groq_model,
+                "temperature": self.llm.temperature
+            }
+        
+        # Fallback to next available provider based on priority
+        fallback_order = [
+            ("openrouter", self.llm.openrouter_api_key, self.llm.openrouter_model, "OpenRouter"),
+            ("google", self.llm.google_api_key, self.llm.google_model, "Google"),
+            ("groq", self.llm.groq_api_key, self.llm.groq_model, "Groq")
+        ]
+        
+        for provider, api_key, model, provider_name in fallback_order:
+            if api_key:
+                logging.info(f"[LLM CONFIG] Fallback: Selecting {provider_name} as provider")
+                config = {
+                    "provider": provider,
+                    "api_key": api_key,
+                    "model": model,
                     "temperature": self.llm.temperature
                 }
-            else:
-                logging.error("[LLM CONFIG] No valid LLM configuration found!")
-                raise ValueError("No valid LLM configuration found")
+                if provider == "openrouter":
+                    config.update({
+                        "site_url": self.llm.openrouter_site_url,
+                        "site_name": self.llm.openrouter_site_name
+                    })
+                return config
+        
+        logging.error("[LLM CONFIG] No valid LLM configuration found!")
+        raise ValueError("No valid LLM configuration found. Please check your API keys and configuration.")
 
 # Remove the global config instance
 # config = Config()

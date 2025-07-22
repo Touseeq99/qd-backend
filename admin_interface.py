@@ -503,6 +503,7 @@ class ModelUpdateRequest(BaseModel):
     provider: str
     groq_model: str
     google_model: str
+    openrouter_model: str
     embedding_provider: str
     embedding_model_google: str
     embedding_model_cohere: str
@@ -758,7 +759,7 @@ async def admin_dashboard_html():
                 align-items: center;
                 justify-content: center;
                 background: var(--bg-card);
-                border: 1.5px solid var(--border);
+                border: 1.5px solid var(--border); 
                 border-bottom: none;
                 color: var(--text-muted);
                 font-size: 1.13em;
@@ -933,14 +934,23 @@ async function resetPromptDefault() {
                 <div id="model-content">
                     <form id="model-form" onsubmit="event.preventDefault(); saveModelConfig();">
                         <label for="provider">LLM Provider:</label>
-                        <select id="provider">
+                        <select id="provider" onchange="toggleModelInputs()">
                             <option value="groq">Groq</option>
                             <option value="google">Google</option>
+                            <option value="openrouter">OpenRouter</option>
                         </select><br>
-                        <label for="groq_model">Groq Model Name:</label>
-                        <input type="text" id="groq_model" placeholder="llama3-70b-8192"><br>
-                        <label for="google_model">Google Model Name:</label>
-                        <input type="text" id="google_model" placeholder="gemma-3-12b-it"><br>
+                        <div id="groq-model-group">
+                            <label for="groq_model">Groq Model Name:</label>
+                            <input type="text" id="groq_model" placeholder="llama3-70b-8192"><br>
+                        </div>
+                        <div id="google-model-group">
+                            <label for="google_model">Google Model Name:</label>
+                            <input type="text" id="google_model" placeholder="gemma-3-12b-it"><br>
+                        </div>
+                        <div id="openrouter-model-group" style="display: none;">
+                            <label for="openrouter_model">OpenRouter Model Name:</label>
+                            <input type="text" id="openrouter_model" placeholder="openai/gpt-4-turbo"><br>
+                        </div>
                         <label for="embedding_provider">Embedding Provider:</label>
                         <select id="embedding_provider" onchange="toggleEmbeddingModelInput()">
                             <option value="google">Google</option>
@@ -1063,13 +1073,25 @@ async function resetPromptDefault() {
                     const response = await fetch('/admin/model/current');
                     const data = await response.json();
                     document.getElementById('provider').value = data.provider;
-                    document.getElementById('groq_model').value = data.groq_model;
-                    document.getElementById('google_model').value = data.google_model;
+                    document.getElementById('groq_model').value = data.groq_model || 'llama3-70b-8192';
+                    document.getElementById('google_model').value = data.google_model || 'gemma-3-12b-it';
+                    document.getElementById('openrouter_model').value = data.openrouter_model || 'openai/gpt-4-turbo';
                     document.getElementById('embedding_provider').value = data.embedding_provider || 'google';
+                    toggleModelInputs();
                     toggleEmbeddingModelInput();
                     document.getElementById('embedding_model_google').value = data.embedding_model_google || '';
                     document.getElementById('embedding_model_cohere').value = data.embedding_model_cohere || '';
-                    document.getElementById('current-model').innerText = data.provider + ' - ' + (data.provider === 'groq' ? data.groq_model : data.google_model);
+                    
+                    // Update current model display
+                    let modelName = '';
+                    if (data.provider === 'groq') {
+                        modelName = data.groq_model || 'llama3-70b-8192';
+                    } else if (data.provider === 'google') {
+                        modelName = data.google_model || 'gemma-3-12b-it';
+                    } else if (data.provider === 'openrouter') {
+                        modelName = data.openrouter_model || 'openai/gpt-4-turbo';
+                    }
+                    document.getElementById('current-model').innerText = `${data.provider} - ${modelName}`;
                 } catch (e) {
                     document.getElementById('model-status').innerHTML = '<span style="color:red;">Failed to load model info</span>';
                 }
@@ -1078,10 +1100,19 @@ async function resetPromptDefault() {
                 const provider = document.getElementById('provider').value;
                 const groq_model = document.getElementById('groq_model').value;
                 const google_model = document.getElementById('google_model').value;
+                const openrouter_model = document.getElementById('openrouter_model').value;
                 const embedding_provider = document.getElementById('embedding_provider').value;
                 let embedding_model_google = document.getElementById('embedding_model_google').value;
                 let embedding_model_cohere = document.getElementById('embedding_model_cohere').value;
-                const payload = { provider, groq_model, google_model, embedding_provider, embedding_model_google, embedding_model_cohere };
+                const payload = { 
+                    provider, 
+                    groq_model, 
+                    google_model, 
+                    openrouter_model,
+                    embedding_provider, 
+                    embedding_model_google, 
+                    embedding_model_cohere 
+                };
                 document.getElementById('model-status').innerHTML = '<span style="color:orange;">Saving...</span>';
                 try {
                     const response = await fetch('/admin/model/update', {
@@ -1394,11 +1425,16 @@ async def get_current_model_config():
     # If cohere_model is set and not default, prefer cohere
     if embedding_model_cohere and embedding_model_cohere != "embed-english-v3.0":
         embedding_provider = "cohere"
+    
+    # Get active LLM config
+    llm_config = cfg.get_active_llm_config()
+    
     return {
-        "provider": cfg.get_active_llm_config()["provider"],
+        "provider": llm_config["provider"],
         "priority": cfg.llm.model_priority,
         "groq_model": cfg.llm.groq_model,
         "google_model": cfg.llm.google_model,
+        "openrouter_model": cfg.llm.openrouter_model,
         "embedding_provider": embedding_provider,
         "embedding_model_google": embedding_model_google,
         "embedding_model_cohere": embedding_model_cohere
@@ -1406,12 +1442,16 @@ async def get_current_model_config():
 
 @router.post("/model/update")
 async def update_model_config(request: ModelUpdateRequest = Body(...)):
-    provider_map = {"groq": 1, "google": 2}
+    provider_map = {"openrouter": 1, "google": 2, "groq": 3}
     new_priority = provider_map.get(request.provider.lower(), 1)
     env_vars = admin_dashboard.read_env_file()
+    
+    # Update model priority and model settings
     env_vars["MODEL_PRIORITY"] = str(new_priority)
     env_vars["GROQ_MODEL"] = request.groq_model
     env_vars["GOOGLE_MODEL"] = request.google_model
+    env_vars["OPENROUTER_MODEL"] = request.openrouter_model
+    
     # Embedding provider/model logic
     if request.embedding_provider == "google":
         env_vars["EMBEDDING_MODEL"] = request.embedding_model_google
@@ -1419,12 +1459,18 @@ async def update_model_config(request: ModelUpdateRequest = Body(...)):
     elif request.embedding_provider == "cohere":
         env_vars["EMBEDDING_MODEL"] = ""
         env_vars["COHERE_EMBEDDING_MODEL"] = request.embedding_model_cohere
+    
+    # Save and reload environment
     admin_dashboard.write_env_file(env_vars)
     load_dotenv(override=True)
+    
     try:
         from ingestion_retrieval.retrieval import invalidate_cache
         invalidate_cache()
-        return {"status": "success", "message": "Model and embedding settings updated. New settings will be used for the next request."}
+        return {
+            "status": "success", 
+            "message": "Model and embedding settings updated. New settings will be used for the next request."
+        }
     except Exception as e:
         return {"status": "error", "message": f"Failed to update config: {str(e)}"} 
 

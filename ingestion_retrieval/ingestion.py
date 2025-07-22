@@ -2,22 +2,15 @@ import os
 import asyncio
 import logging
 from concurrent.futures import ThreadPoolExecutor
-from typing import Dict, Any, List
+from typing import Dict, Any, List , Optional
 from pydantic import SecretStr
 
 # Configure logger
 logger = logging.getLogger(__name__)
 from qdrant_client.http import models
 from langchain_community.document_loaders import DirectoryLoader
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain.embeddings.base import Embeddings
-
-# Conditional import for Cohere
-try:
-    import cohere
-    COHERE_AVAILABLE = True
-except ImportError:
-    COHERE_AVAILABLE = False
+from sentence_transformers import SentenceTransformer
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_qdrant import QdrantVectorStore
@@ -31,46 +24,111 @@ import re
 executor = ThreadPoolExecutor(max_workers=10)
 
 # -------------------------
-# ✅ Agentic Chunking Strategy
+# ✅ Clause-based Chunking Strategy
 # -------------------------
 
+def extract_docx_text(file_path: str) -> List[str]:
+    """Extract non-empty paragraphs from the .docx file."""
+    from docx import Document
+    doc = Document(file_path)
+    return [para.text.strip() for para in doc.paragraphs if para.text.strip()]
+
+def is_clause_line(text: str) -> Optional[str]:
+    """
+    Match only lines that truly start with a clause pattern like '6.1', '6.2.3'
+    and extract the top-level clause number like '6', '7', etc.
+    """
+    match = re.match(r"^(\d{1,2})(\.\d+)+\s", text)  # must be at least like '6.1 '
+    return match.group(1) if match else None
+
+def is_heading_line(text: str) -> bool:
+    """
+    Basic heuristic for detecting non-numbered headings.
+    Accepts short, capitalized lines with no clause numbering.
+    """
+    return (
+        not is_clause_line(text)
+        and len(text.split()) <= 6
+        and text[0].isupper()
+        and text == text.title()
+    )
+
+def chunk_by_clause_or_heading(paragraphs: List[str]) -> List[Dict]:
+    """
+    Hybrid chunker:
+    - If numbered clauses (1., 2.1, etc.) exist: chunks by top-level number
+    - If no clauses: falls back to heading-based chunking
+    """
+    chunks = []
+    current_chunk = []
+    current_title = None
+    clause_found = False
+
+    for para in paragraphs:
+        clause = is_clause_line(para)
+        heading = is_heading_line(para)
+
+        if clause:
+            clause_found = True
+            if clause != current_title:
+                if current_chunk:
+                    chunks.append({
+                        "title": current_title or "Preamble",
+                        "content": "\n".join(current_chunk).strip()
+                    })
+                    current_chunk = []
+                current_title = clause
+        elif heading and not clause_found:
+            # Use headings as chunks only if no clauses are detected at all
+            if current_chunk:
+                chunks.append({
+                    "title": current_title or "Section",
+                    "content": "\n".join(current_chunk).strip()
+                })
+                current_chunk = []
+            current_title = para
+
+        current_chunk.append(para)
+
+    if current_chunk:
+        chunks.append({
+            "title": current_title or "Final",
+            "content": "\n".join(current_chunk).strip()
+        })
+
+    return chunks
+
 def process_document(text: str, policy_name: str) -> List[Document]:
-    """Recursive chunking document processor (no agentic chunking)"""
+    """Process document using clause-based chunking for structured documents."""
     text = text.strip()
     if not text:
         return []
 
     from config import get_config
     config = get_config()
-    chunk_size = 1024
-    chunk_overlap = 256
-    # Optimized separators for HR policy documents
-    separators = ["\n\n", "\n", ". ", "! ", "? ", ", ", "; ", ": ", " ", ""]
-    splitter = RecursiveCharacterTextSplitter(
-        chunk_size=chunk_size,
-        chunk_overlap=chunk_overlap,
-        separators=separators
-    )
-    raw_chunks = splitter.split_text(text)
-    chunks = []
-    for i, chunk in enumerate(raw_chunks):
-        chunk = chunk.strip()
-        if chunk and len(chunk) > 30:
-            lines = chunk.split('\n')
-            first_line = lines[0].strip()
-            topic = first_line[:80] if first_line else "General"
-            chunks.append(Document(
-                page_content=chunk,
-                metadata={
-                    "topic": topic,
-                    "chunk_type": "recursive",
-                    "policy": policy_name,
-                    "chunking_method": "recursive",
-                    "chunk_index": i,
-                    "content_length": len(chunk)
-                }
-            ))
-    return chunks
+    
+    # Split text into paragraphs (simulating docx paragraphs)
+    paragraphs = [p for p in text.split('\n') if p.strip()]
+    
+    # Use enhanced chunking that handles both numbered clauses and headings
+    chunks = chunk_by_clause_or_heading(paragraphs)
+    
+    # Convert to Document objects with metadata
+    final_chunks = []
+    for i, chunk in enumerate(chunks):
+        final_chunks.append(Document(
+            page_content=chunk["content"],
+            metadata={
+                "heading": chunk["title"],
+                "chunk_type": "section",
+                "policy": policy_name,
+                "chunking_method": "heading_with_clauses",
+                "chunk_index": i,
+                "content_length": len(chunk["content"])
+            }
+        ))
+    
+    return final_chunks
 
 
 async def delete_and_recreate_collection(
@@ -193,46 +251,62 @@ async def ingest_documents_to_qdrant_async(
             chunks = splitter.split_documents(documents)
             logger.info(f"Fallback chunks generated: {len(chunks)}")
 
-        # Embedding selection: Google first, Cohere fallback
-        embeddings = None
-        if config.embedding.google_api_key and config.embedding.google_model:
-            logger.info(f"Using Google embedding model: {config.embedding.google_model}")
-            google_api_key = config.embedding.google_api_key
-            if google_api_key is not None:
-                google_api_key = SecretStr(google_api_key)
-            embeddings = GoogleGenerativeAIEmbeddings(
-                model=config.embedding.google_model,
-                google_api_key=google_api_key
-            )
-        elif COHERE_AVAILABLE and config.embedding.cohere_api_key and config.embedding.cohere_model:
-            logger.info(f"Using Cohere embedding model: {config.embedding.cohere_model}")
-            class CohereEmbeddings(Embeddings):
-                def __init__(self, api_key, model):
-                    self.client = cohere.Client(api_key)
-                    self.model = model
-                def embed_documents(self, texts: List[str]) -> List[List[float]]:
-                    resp = self.client.embed(
-                        texts=texts, 
-                        model=self.model,
-                        input_type='search_document'
+        # Initialize SentenceTransformer for embeddings
+        logger.info("Initializing SentenceTransformer with BAAI/bge-small-en-v1.5 model")
+        
+        class SentenceTransformerEmbeddings(Embeddings):
+            def __init__(self, model_name: str = "BAAI/bge-base-en-v1.5"):
+                self.model = SentenceTransformer(model_name)
+                
+            def embed_documents(self, texts: List[str]) -> List[List[float]]:
+                """Embed a list of documents using SentenceTransformer."""
+                if not texts:
+                    return []
+                    
+                # Convert input to list of strings if it's a single string
+                if isinstance(texts, str):
+                    texts = [texts]
+                    
+                try:
+                    # Generate embeddings in batches to handle large inputs
+                    batch_size = 32
+                    all_embeddings = []
+                    
+                    for i in range(0, len(texts), batch_size):
+                        batch = texts[i:i + batch_size]
+                        embeddings = self.model.encode(
+                            batch,
+                            convert_to_numpy=True,
+                            normalize_embeddings=True
+                        )
+                        all_embeddings.extend(embeddings.tolist())
+                    
+                    return all_embeddings
+                    
+                except Exception as e:
+                    logger.error(f"Error embedding documents: {str(e)}")
+                    raise
+                    
+            def embed_query(self, text: str) -> List[float]:
+                """Embed a query using SentenceTransformer with the required prefix."""
+                try:
+                    # Format the query with the required prefix
+                    formatted_query = "Represent this sentence for searching relevant passages: " + text
+                    embedding = self.model.encode(
+                        formatted_query,
+                        convert_to_numpy=True,
+                        normalize_embeddings=True
                     )
-                    return [e for e in resp.embeddings if isinstance(e, list)]
-                def embed_query(self, text: str) -> List[float]:
-                    resp = self.client.embed(
-                        texts=[text], 
-                        model=self.model,
-                        input_type='search_query'
-                    )
-                    for e in resp.embeddings:
-                        if isinstance(e, list):
-                            return e
+                    return embedding.tolist()
                     raise ValueError('No valid embedding returned')
-            embeddings = CohereEmbeddings(
-                api_key=config.embedding.cohere_api_key,
-                model=config.embedding.cohere_model
-            )
-        else:
-            raise ValueError("No valid embedding provider configured!")
+                except Exception as e:
+                    logger.error(f"Error embedding query: {str(e)}")
+                    raise
+        
+        # Initialize SentenceTransformer embeddings
+        embeddings = SentenceTransformerEmbeddings(
+            model_name=config.embedding.sentence_transformer_model
+        )
 
         client = QdrantClient(url=qdrant_url, api_key=qdrant_api, timeout=120)
 
@@ -266,7 +340,7 @@ async def ingest_documents_to_qdrant_async(
 
 
 def check_or_create_qdrant_collection(
-    qdrant_url: str,
+    qdrant_url: str, 
     qdrant_api: str,
     collection_name: str,
     vector_size: int = 768,

@@ -13,7 +13,7 @@ docker build ^
     --tag qd_hr_assistant-hr-assistant ^
     --target production ^
     .
-
+ 
 if %ERRORLEVEL% EQU 0 (
     echo ✅ Build completed successfully!
     
