@@ -1,3 +1,7 @@
+# Configure NLTK before any imports that might use it
+import os
+os.environ["NLTK_DATA"] = os.getenv("NLTK_DATA", "/app/nltk_data")
+
 import time
 import logging
 from fastapi import FastAPI, HTTPException, UploadFile, File, Form, status
@@ -6,7 +10,6 @@ from typing import List
 import re
 import shutil
 from dotenv import load_dotenv
-import os
 
 # Load environment variables from .env file
 load_dotenv()
@@ -49,8 +52,52 @@ def setup_logging():
 # Initialize logging
 logger = setup_logging()
 
-# Load environment variables
-load_dotenv()
+# Configure NLTK to use a writable directory for data
+import nltk
+import os
+from pathlib import Path
+
+# Create a directory for NLTK data in the current working directory
+nltk_data_dir = Path("nltk_data")
+nltk_data_dir.mkdir(exist_ok=True, parents=True)
+
+# Set NLTK data path to our custom directory
+os.environ["NLTK_DATA"] = str(nltk_data_dir.absolute())
+
+# Download required NLTK data
+required_nltk_data = [
+    'punkt',
+    'averaged_perceptron_tagger',
+    'averaged_perceptron_tagger_eng',  # Specifically required by unstructured
+    'wordnet',
+    'stopwords',
+    'words',
+    'maxent_ne_chunker',
+    'book'  # Includes many useful corpora and models
+]
+
+try:
+    for package in required_nltk_data:
+        try:
+            nltk.download(package, download_dir=str(nltk_data_dir.absolute()))
+            logger.info(f"Successfully downloaded NLTK data: {package}")
+        except Exception as e:
+            logger.warning(f"Could not download NLTK package {package}: {str(e)}")
+    
+    # Verify NLTK data path is set correctly
+    nltk.data.path.insert(0, str(nltk_data_dir.absolute()))
+    logger.info(f"NLTK data path set to: {nltk_data_dir.absolute()}")
+    
+    # Test NLTK data loading
+    try:
+        nltk.data.find('tokenizers/punkt', paths=[str(nltk_data_dir.absolute())])
+        logger.info("NLTK data verification successful")
+    except LookupError:
+        logger.warning("NLTK data verification failed - some functionality may be limited")
+        
+except Exception as e:
+    logger.error(f"Error in NLTK data setup: {str(e)}")
+    # Continue anyway, NLTK will try to download data when needed
 
 # Import configuration and admin interface
 from config import get_config, validate_config
@@ -67,8 +114,98 @@ from ingestion_retrieval.retrieval import get_cached_hr_assistant_chain
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-# Initialize FastAPI
-app = FastAPI(title="HR Assistant API", version="1.0.0")
+# Initialize FastAPI with lifespan management
+from contextlib import asynccontextmanager
+from fastapi import FastAPI
+import asyncio
+import signal
+import sys
+
+class ServerState:
+    def __init__(self):
+        self.should_exit = False
+        self.force_exit = False
+        self.uvicorn_server = None
+
+server_state = ServerState()
+
+async def shutdown():
+    """Graceful shutdown handler"""
+    if server_state.should_exit:
+        return
+        
+    server_state.should_exit = True
+    logger.info("Initiating graceful shutdown...")
+    
+    if server_state.uvicorn_server:
+        server_state.uvicorn_server.keep_running = False
+        await server_state.uvicorn_server.shutdown()
+    
+    logger.info("Shutdown complete")
+
+def handle_signal(signum, frame):
+    """Handle OS signals for graceful shutdown"""
+    if server_state.should_exit:
+        logger.warning("Force shutdown requested...")
+        server_state.force_exit = True
+        return
+        
+    logger.info(f"Received signal {signum}, initiating graceful shutdown...")
+    asyncio.create_task(shutdown())
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Register signal handlers
+    for sig in (signal.SIGINT, signal.SIGTERM):
+        signal.signal(sig, handle_signal)
+    
+    # Startup
+    logger.info("Starting up HR Assistant API...")
+    
+    try:
+        # Store server reference for shutdown
+        if hasattr(app, 'state') and hasattr(app.state, 'server'):
+            server_state.uvicorn_server = app.state.server
+        
+        # Validate configuration
+        validate_config()
+        logger.info("Configuration validated successfully")
+        
+        # Pre-warm the model in the background
+        async def prewarm_model():
+            try:
+                logger.info("Pre-warming the model...")
+                qa_chain = get_cached_hr_assistant_chain(
+                    config.database.url, 
+                    config.database.api_key, 
+                    config.database.collection_name
+                )
+                logger.info("Model pre-warm complete")
+            except Exception as e:
+                logger.error(f"Model pre-warm failed: {str(e)}", exc_info=True)
+        
+        # Start pre-warming in the background
+        asyncio.create_task(prewarm_model())
+        
+        logger.info("Application startup complete")
+        yield
+        
+    except Exception as e:
+        logger.error(f"Startup failed: {str(e)}", exc_info=True)
+        server_state.should_exit = True
+        raise
+        
+    finally:
+        # Cleanup resources on shutdown
+        if not server_state.force_exit:
+            await shutdown()
+
+# Initialize FastAPI with lifespan manager
+app = FastAPI(
+    title="HR Assistant API",
+    version="1.0.0",
+    lifespan=lifespan
+)
 
 # Get configuration
 config = get_config()
@@ -87,12 +224,12 @@ app.add_middleware(
 
 # Include admin router
 app.include_router(admin_router)
-
+ 
 # Timing decorator
 def timeit(func):
     @wraps(func)
     async def wrapper(*args, **kwargs):
-        start = time.time()
+        start = time.time() 
         result = await func(*args, **kwargs)
         end = time.time()
         logger.info(f"⏱️ {func.__name__} took {end - start:.2f} seconds")
@@ -107,7 +244,7 @@ class QueryRequest(BaseModel):
         description="The HR-related question to answer"
     )
 class IngestRequest(BaseModel):
-    directory_path: str = Field(
+    directory_path: str = Field( 
         "",
         min_length=0,
         max_length=500,

@@ -19,6 +19,7 @@ from qdrant_client.models import Distance, VectorParams, SparseVectorParams
 from langchain_qdrant import QdrantVectorStore, FastEmbedSparse, RetrievalMode
 from langchain.schema import Document
 import re
+from langchain_openai import OpenAIEmbeddings
 
 # Thread pool executor for async ingestion
 executor = ThreadPoolExecutor(max_workers=10)
@@ -304,9 +305,14 @@ async def ingest_documents_to_qdrant_async(
                     raise
         
         # Initialize SentenceTransformer embeddings
-        embeddings = SentenceTransformerEmbeddings(
-            model_name=config.embedding.sentence_transformer_model
-        )
+        llm_config = config.get_active_llm_config() 
+        if llm_config['provider']=="openai":
+            embeddings = OpenAIEmbeddings(model_name="text-embedding-3-large",dimensions=768)
+        else:
+            embeddings = SentenceTransformerEmbeddings(
+                model_name=config.embedding.sentence_transformer_model
+            )   
+
 
         client = QdrantClient(url=qdrant_url, api_key=qdrant_api, timeout=120)
 

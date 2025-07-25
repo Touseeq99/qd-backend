@@ -36,7 +36,7 @@ class LLMConfig:
     """Language model configuration"""
     # Primary LLM (OpenRouter)
     openrouter_api_key: Optional[str] = field(default_factory=lambda: get_env_value("OPENROUTER_API_KEY", ""))
-    openrouter_model: str = field(default_factory=lambda: get_env_value("OPENROUTER_MODEL", "meta-llama/llama-3.1-70b-instruct:free"))
+    openrouter_model: str = field(default_factory=lambda: get_env_value("OPENROUTER_MODEL", "deepseek/deepseek-chat-v3-0324:free"))
     
     # Fallback LLM (Google)
     google_api_key: Optional[str] = field(default_factory=lambda: get_env_value("GOOGLE_API_KEY", ""))
@@ -45,6 +45,9 @@ class LLMConfig:
     # Legacy LLM (Groq) - Kept for backward compatibility
     groq_api_key: Optional[str] = field(default_factory=lambda: get_env_value("GROQ_API_KEY", ""))
     groq_model: str = field(default_factory=lambda: get_env_value("GROQ_MODEL", "llama3-70b-8192"))
+
+    openai_api_key: Optional[str] = field(default_factory=lambda: get_env_value("OPENAI_API_KEY", ""))
+    openai_model: str = field(default_factory=lambda: get_env_value("OPENAI_MODEL", "gpt-4o"))
 
     # Model selection priority (1=OpenRouter, 2=Google, 3=Groq)
     model_priority: int = field(default_factory=lambda: int(get_env_value("MODEL_PRIORITY", "1")))
@@ -60,15 +63,7 @@ class EmbeddingConfig:
             "BAAI/bge-base-en-v1.5"
         )
     )
-    
-    # Google embeddings as fallback (optional)
-    google_api_key: Optional[str] = field(default_factory=lambda: get_env_value("GOOGLE_API_KEY", ""))
-    google_model: str = field(
-        default_factory=lambda: get_env_value(
-            "GOOGLE_EMBEDDING_MODEL", 
-            "models/embedding-001"
-        )
-    )
+
 
 @dataclass 
 class ServerConfig: 
@@ -91,13 +86,13 @@ class VectorSearchConfig:
     """Vector search configuration"""
     chunk_size: int = field(default_factory=lambda: int(get_env_value("CHUNK_SIZE", "600")))
     chunk_overlap: int = field(default_factory=lambda: int(get_env_value("CHUNK_OVERLAP", "150")))
-    search_k: int = field(default_factory=lambda: int(get_env_value("SEARCH_K", "5")))
+    search_k: int = field(default_factory=lambda: int(get_env_value("SEARCH_K", "23")))
     fetch_k: int = field(default_factory=lambda: int(get_env_value("FETCH_K", "10")))
     score_threshold: float = field(default_factory=lambda: float(get_env_value("SCORE_THRESHOLD", "0.3")))
     # HNSW optimization parameters
     hnsw_ef: int = field(default_factory=lambda: int(get_env_value("HNSW_EF", "32")))
     # Caching parameters
-    cache_size: int = field(default_factory=lambda: int(get_env_value("CACHE_SIZE", "1024"))) 
+    cache_size: int = field(default_factory=lambda: int(get_env_value("CACHE_SIZE", "1024")))  
  
 @dataclass
 class SecurityConfig:
@@ -175,7 +170,6 @@ class Config:
                 "provider": "google",
                 "api_key": self.llm.google_api_key,
                 "model": self.llm.google_model,
-                "temperature": self.llm.temperature
             }
         # Priority 3: Groq (legacy)
         elif self.llm.model_priority == 3 and self.llm.groq_api_key:
@@ -184,8 +178,13 @@ class Config:
                 "provider": "groq",
                 "api_key": self.llm.groq_api_key,
                 "model": self.llm.groq_model,
-                "temperature": self.llm.temperature
             }
+        elif self.llm.model_priority == 4 and self.llm.openai_api_key:
+            logging.info("[LLM CONFIG] Selecting OpenAI as provider")
+            return {
+                "provider": "openai",
+                "api_key": self.llm.openai_api_key,
+                "model": self.llm.openai_model,            }
         
         # Fallback to next available provider based on priority
         fallback_order = [
@@ -201,7 +200,6 @@ class Config:
                     "provider": provider,
                     "api_key": api_key,
                     "model": model,
-                    "temperature": self.llm.temperature
                 }
                 if provider == "openrouter":
                     config.update({

@@ -24,15 +24,21 @@ watchfiles
 websockets
 
 # Document processing
-unstructured
+unstructured[docx,doc,ppt,pptx,xlsx,md,pdf,images]
 pdfminer.six
-
-# LangServe
-langserve
-
-# Optional: Cohere (commented out to avoid conflicts)
-langchain_cohere
-cohere
+pypandoc>=1.10
+python-pptx
+python-docx
+openpyxl
+pandas
+beautifulsoup4
+lxml
+markdown
+Pillow>=9.1.0  # For image processing
+tika  # For additional file format support
+nltk>=3.8.1
+# NLTK data packages (will be downloaded on first use)
+# Common data: punkt, averaged_perceptron_tagger, wordnet, stopwords
 
 # Utilities
 python-dotenv
@@ -41,3 +47,4 @@ psutil
 langchain-text-splitters
 fastembed-gpu
 sentence-transformers
+numpy<2.0.0

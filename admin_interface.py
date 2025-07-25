@@ -109,7 +109,7 @@ class SystemStatus(BaseModel):
     memory_usage: Dict[str, Any]
     disk_usage: Dict[str, Any]
     active_connections: int
-    last_backup: str
+    api_stats: Dict[str, int] = {"total_calls": 0, "successful_calls": 0, "error_calls": 0}
     collection_stats: Dict[str, Any]
 
 class ConfigurationUpdate(BaseModel):
@@ -139,6 +139,12 @@ class AdminDashboard:
         self.start_time = datetime.now()
         self.env_file_path = Path(".env")
         self._load_env_variables()
+        # Initialize API call counters
+        self.api_stats = {
+            "total_calls": 0,
+            "successful_calls": 0,
+            "error_calls": 0
+        }
     
     def _load_env_variables(self):
         """Load environment variables from .env file and system environment"""
@@ -255,11 +261,11 @@ class AdminDashboard:
             "QDRANT_COLLECTION": "Name of the Qdrant collection for HR documents",
             "GOOGLE_API_KEY": "Google API key for embeddings and LLM (required)",
             "GROQ_API_KEY": "Groq API key for LLM (optional, for faster responses)",
-            "OPENAI_API_KEY": "OpenAI API key for LLM (optional)",
-            "MODEL_PRIORITY": "LLM priority: 1=Groq, 2=Google, 3=OpenAI",
+            "OPENROUTER_API_KEY": "OpenRouter API key for LLM (optional)",
+            "MODEL_PRIORITY": "LLM priority: 1=Groq, 2=Google, 3=OpenRouter",
             "GROQ_MODEL": "Groq model name (e.g., llama3-70b-8192)",
             "GOOGLE_MODEL": "Google model name (e.g., gemma-3-12b-it)",
-            "OPENAI_MODEL": "OpenAI model name (e.g., gpt-4)",
+            "OPENROUTER_MODEL": "OpenRouter model name (e.g., gpt-4)",
             "TEMPERATURE": "AI model temperature (0.1=factual, 0.8=creative)",
             "EMBEDDING_MODEL": "Google embedding model name",
             "COHERE_API_KEY": "Cohere API key for fallback embeddings",
@@ -295,6 +301,18 @@ class AdminDashboard:
             "file_path": str(self.env_file_path.absolute())
         }
     
+    def update_api_stats(self, success: bool = True) -> None:
+        """Update API call statistics
+        
+        Args:
+            success: Whether the API call was successful
+        """
+        self.api_stats["total_calls"] += 1
+        if success:
+            self.api_stats["successful_calls"] += 1
+        else:
+            self.api_stats["error_calls"] += 1
+
     def get_system_status(self) -> SystemStatus:
         """Get comprehensive system status"""
         try:
@@ -333,7 +351,7 @@ class AdminDashboard:
                 memory_usage=memory_usage,
                 disk_usage=disk_usage,
                 active_connections=0,  # Would need to implement connection tracking
-                last_backup=self._get_last_backup_time(),
+                api_stats=self.api_stats,
                 collection_stats=collection_stats
             )
         except Exception as e:
@@ -344,7 +362,7 @@ class AdminDashboard:
                 memory_usage={},
                 disk_usage={},
                 active_connections=0,
-                last_backup="unknown",
+                api_stats={"total_calls": 0, "successful_calls": 0, "error_calls": 0},
                 collection_stats={}
             )
     
@@ -469,35 +487,66 @@ class AdminDashboard:
     
     def get_configuration_summary(self) -> Dict[str, Any]:
         """Get a summary of current configuration"""
-        return {
-            "database": {
-                "url": self.config.database.url,
-                "collection": self.config.database.collection_name,
-                "vector_size": self.config.database.vector_size
-            },
-            "llm": {
-                "active_provider": self.config.get_active_llm_config()["provider"],
-                "model": self.config.get_active_llm_config()["model"],
-                "temperature": self.config.llm.temperature
-            },
-            "embedding": {
-                "model": self.config.embedding.google_model
-            },
-            "server": {
-                "port": self.config.server.port,
-                "workers": self.config.server.workers,
-                "log_level": self.config.server.log_level
-            },
-            "file_upload": {
-                "max_size_mb": self.config.file_upload.max_file_size_mb,
-                "allowed_extensions": self.config.file_upload.allowed_extensions
-            },
-            "backup": {
-                "enabled": self.config.backup.auto_backup_enabled,
-                "frequency_hours": self.config.backup.backup_frequency_hours,
-                "retention_days": self.config.backup.backup_retention_days
+        try:
+            active_llm = self.config.get_active_llm_config()
+            provider = active_llm.get("provider", "unknown")
+            model = active_llm.get("model", "")
+            
+            return {
+                "database": {
+                    "url": self.config.database.url,
+                    "collection": self.config.database.collection_name,
+                    "vector_size": self.config.database.vector_size
+                },
+                "llm": {
+                    "active_provider": provider,
+                    "model": model,  # Frontend expects this as 'model' not 'active_model'
+                    "temperature": getattr(self.config.llm, 'temperature', 0.8)
+                },
+                "server": {
+                    "port": getattr(self.config.server, 'port', 8000),
+                    "workers": getattr(self.config.server, 'workers', 4),
+                    "log_level": getattr(self.config.server, 'log_level', 'INFO')
+                },
+                "file_upload": {
+                    "max_size_mb": getattr(self.config.file_upload, 'max_file_size_mb', 200),
+                    "allowed_extensions": getattr(self.config.file_upload, 'allowed_extensions', ['.pdf', '.docx', '.txt'])
+                },
+                "backup": {
+                    "enabled": getattr(self.config.backup, 'auto_backup_enabled', True),
+                    "frequency_hours": getattr(self.config.backup, 'backup_frequency_hours', 24),
+                    "retention_days": getattr(self.config.backup, 'backup_retention_days', 7)
+                }
             }
-        }
+        except Exception as e:
+            logger.error(f"Error in get_configuration_summary: {str(e)}")
+            # Return a safe default configuration if there's an error
+            return {
+                "database": {
+                    "url": "unknown",
+                    "collection": "unknown",
+                    "vector_size": 0
+                },
+                "llm": {
+                    "active_provider": "error",
+                    "model": "unknown",
+                    "temperature": 0.8
+                },
+                "server": {
+                    "port": 8000,
+                    "workers": 4,
+                    "log_level": "ERROR"
+                },
+                "file_upload": {
+                    "max_size_mb": 200,
+                    "allowed_extensions": ['.pdf', '.docx', '.txt']
+                },
+                "backup": {
+                    "enabled": False,
+                    "frequency_hours": 24,
+                    "retention_days": 7
+                }
+            }
 
 class ModelUpdateRequest(BaseModel):
     provider: str
@@ -819,6 +868,92 @@ async def admin_dashboard_html():
 
 
             <script>
+            // Global notification system
+            function showNotification(message, type = 'info') {
+                const container = document.getElementById('toast-container');
+                if (!container) {
+                    console.error('Notification container not found');
+                    return;
+                }
+                
+                // Create notification element
+                const toast = document.createElement('div');
+                toast.className = `toast-notification ${type}`;
+                toast.innerHTML = `
+                    <div class="toast-icon">${type === 'error' ? '❌' : type === 'success' ? '✅' : 'ℹ️'}</div>
+                    <div class="toast-message">${message}</div>
+                    <button class="toast-close" onclick="this.parentElement.remove()">×</button>
+                `;
+                
+                // Add to container
+                container.appendChild(toast);
+                
+                // Auto-remove after delay
+                setTimeout(() => {
+                    toast.classList.add('fade-out');
+                    setTimeout(() => toast.remove(), 300);
+                }, 5000);
+            }
+            
+            // Add styles for notifications
+            const style = document.createElement('style');
+            style.textContent = `
+                .toast-notification {
+                    display: flex;
+                    align-items: center;
+                    padding: 12px 16px;
+                    margin-bottom: 12px;
+                    border-radius: 4px;
+                    color: white;
+                    background: #333;
+                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                    transform: translateX(100%);
+                    animation: slideIn 0.3s forwards;
+                    min-width: 250px;
+                    max-width: 350px;
+                }
+                .toast-notification.success { background: #4CAF50; }
+                .toast-notification.error { background: #F44336; }
+                .toast-notification.warning { background: #FF9800; }
+                .toast-notification.info { background: #2196F3; }
+                .toast-icon { margin-right: 12px; font-size: 1.2em; }
+                .toast-message { flex: 1; }
+                .toast-close {
+                    background: none;
+                    border: none;
+                    color: white;
+                    font-size: 1.2em;
+                    cursor: pointer;
+                    padding: 0 0 0 12px;
+                    margin: 0;
+                    opacity: 0.7;
+                }
+                .toast-close:hover { opacity: 1; }
+                @keyframes slideIn {
+                    to { transform: translateX(0); }
+                }
+                .fade-out {
+                    animation: fadeOut 0.3s forwards;
+                }
+                @keyframes fadeOut {
+                    to { opacity: 0; transform: translateX(100%); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Make sure the notification container exists
+            document.addEventListener('DOMContentLoaded', () => {
+                if (!document.getElementById('toast-container')) {
+                    const container = document.createElement('div');
+                    container.id = 'toast-container';
+                    container.style.position = 'fixed';
+                    container.style.top = '30px';
+                    container.style.right = '30px';
+                    container.style.zIndex = '9999';
+                    document.body.appendChild(container);
+                }
+            });
+            
             async function loadPrompt() {
                 try {
                     const res = await fetch('/admin/prompt');
@@ -930,45 +1065,14 @@ async function resetPromptDefault() {
         </div>
         <div id="model" class="tab">
             <div class="card">
-                <h2>Model Management</h2>
                 <div id="model-content">
-                    <form id="model-form" onsubmit="event.preventDefault(); saveModelConfig();">
-                        <label for="provider">LLM Provider:</label>
-                        <select id="provider" onchange="toggleModelInputs()">
-                            <option value="groq">Groq</option>
-                            <option value="google">Google</option>
-                            <option value="openrouter">OpenRouter</option>
-                        </select><br>
-                        <div id="groq-model-group">
-                            <label for="groq_model">Groq Model Name:</label>
-                            <input type="text" id="groq_model" placeholder="llama3-70b-8192"><br>
-                        </div>
-                        <div id="google-model-group">
-                            <label for="google_model">Google Model Name:</label>
-                            <input type="text" id="google_model" placeholder="gemma-3-12b-it"><br>
-                        </div>
-                        <div id="openrouter-model-group" style="display: none;">
-                            <label for="openrouter_model">OpenRouter Model Name:</label>
-                            <input type="text" id="openrouter_model" placeholder="openai/gpt-4-turbo"><br>
-                        </div>
-                        <label for="embedding_provider">Embedding Provider:</label>
-                        <select id="embedding_provider" onchange="toggleEmbeddingModelInput()">
-                            <option value="google">Google</option>
-                            <option value="cohere">Cohere</option>
-                        </select><br>
-                        <div id="embedding-model-inputs">
-                            <label for="embedding_model_google">Google Embedding Model Name:</label>
-                            <input type="text" id="embedding_model_google" placeholder="models/embedding-001"><br>
-                            <label for="embedding_model_cohere" style="display:none;">Cohere Embedding Model Name:</label>
-                            <input type="text" id="embedding_model_cohere" placeholder="embed-english-v3.0" style="display:none;"><br>
-                        </div>
-                        <button class="button" type="submit">Save Model Settings</button>
-                    </form>
-                    <div id="model-status"></div>
-                    <div style="margin-top: 18px;">
-                        <strong>Current Active Model:</strong> <span id="current-model"></span>
+                    <!-- Model cards will be populated by JavaScript -->
+                    <div style="text-align: center; padding: 40px 0; color: var(--text-muted);">
+                        Loading model configurations...
                     </div>
                 </div>
+                
+                <div id="model-status" style="margin-top: 20px;"></div>
             </div>
         </div>
         <div id="config" class="tab">
@@ -1008,8 +1112,72 @@ async function resetPromptDefault() {
 
         </div>
         <script>
+            // Global variables
             let envData = {};
             let configData = {};
+            
+            // Show notification function (must be in global scope)
+            function showNotification(message, type = 'info') {
+                let container = document.getElementById('notification-container');
+                if (!container) {
+                    // Create notification container if it doesn't exist
+                    container = document.createElement('div');
+                    container.id = 'notification-container';
+                    container.style.cssText = `
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        z-index: 1000;
+                        max-width: 400px;
+                    `;
+                    document.body.appendChild(container);
+                }
+                
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.style.cssText = `
+                    background: var(--bg-card);
+                    border-left: 4px solid ${type === 'error' ? 'var(--danger)' : type === 'warning' ? 'var(--warning)' : 'var(--success)'};
+                    border-radius: 4px;
+                    padding: 12px 16px;
+                    margin-bottom: 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    max-width: 100%;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                    animation: slideIn 0.3s ease-out;
+                `;
+                
+                notification.innerHTML = `
+                    <div>${message}</div>
+                    <button style="
+                        background: none;
+                        border: none;
+                        color: var(--text-muted);
+                        cursor: pointer;
+                        font-size: 18px;
+                        margin-left: 10px;
+                        padding: 0 5px;
+                    ">&times;</button>
+                `;
+                
+                // Add click handler for the close button
+                notification.querySelector('button').onclick = function() {
+                    notification.style.animation = 'fadeOut 0.3s ease-out';
+                    setTimeout(() => notification.remove(), 300);
+                };
+                
+                container.appendChild(notification);
+                
+                // Auto-remove after 5 seconds
+                setTimeout(() => { 
+                    if (notification.parentNode) {
+                        notification.style.animation = 'fadeOut 0.3s ease-out';
+                        setTimeout(() => notification.remove(), 300);
+                    }
+                }, 5000);
+            }
             function showTab(tabName) {
                 document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
                 document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
@@ -1019,16 +1187,121 @@ async function resetPromptDefault() {
                 if (tabName === 'model') loadModelTab();
                 if (tabName === 'upload') loadUploadTab();
             }
+            function getStatusColor(percent) {
+                return percent > 80 ? '#f44336' : percent > 50 ? '#FFC107' : '#4CAF50';
+            }
+
             async function loadStatus() {
-                const response = await fetch('/admin/status');
-                const status = await response.json();
-                document.getElementById('status-content').innerHTML = `
-                    <div class="metric">Status: <strong>${status.status}</strong></div>
-                    <div class="metric">Uptime: ${status.uptime}</div>
-                    <div class="metric">Memory: ${status.memory_usage.percent}%</div>
-                    <div class="metric">Disk: ${status.disk_usage.percent}%</div>
-                    <div class="metric">Last Backup: ${status.last_backup}</div>
-                `;
+                try {
+                    const response = await fetch('/admin/status');
+                    const status = await response.json();
+                    
+                    document.getElementById('status-content').innerHTML = `
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px;">
+                            <!-- System Status -->
+                            <div class="metric-card" style="
+                                background: rgba(30, 41, 59, 0.7);
+                                border-radius: 10px;
+                                padding: 15px;
+                                border-left: 4px solid #4CAF50;
+                                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                            ">
+                                <div style="display: flex; align-items: center; justify-content: space-between;">
+                                    <div>
+                                        <div style="font-size: 0.9em; color: #94a3b8;">System Status</div>
+                                        <div style="font-size: 1.4em; font-weight: 600; color: #4CAF50;">${status.status.toUpperCase()}</div>
+                                        <div style="font-size: 0.8em; color: #64748b; margin-top: 4px;">${status.uptime}</div>
+                                    </div>
+                                    <div style="
+                                        background: #4CAF5020;
+                                        width: 40px;
+                                        height: 40px;
+                                        border-radius: 50%;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        font-size: 1.2em;
+                                    ">
+                                        ${status.status === 'healthy' ? '✅' : '⚠️'}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Memory Usage -->
+                            <div class="metric-card" style="
+                                background: rgba(30, 41, 59, 0.7);
+                                border-radius: 10px;
+                                padding: 15px;
+                                border-left: 4px solid ${getStatusColor(status.memory_usage.percent)};
+                                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                            ">
+                                <div style="display: flex; align-items: center; justify-content: space-between;">
+                                    <div>
+                                        <div style="font-size: 0.9em; color: #94a3b8;">Memory Usage</div>
+                                        <div style="font-size: 1.4em; font-weight: 600; color: ${getStatusColor(status.memory_usage.percent)};">
+                                            ${status.memory_usage.percent}%
+                                        </div>
+                                        <div style="font-size: 0.8em; color: #64748b; margin-top: 4px;">
+                                            ${status.memory_usage.used_gb.toFixed(1)}GB / ${status.memory_usage.total_gb.toFixed(1)}GB
+                                        </div>
+                                    </div>
+                                    <div style="
+                                        background: ${getStatusColor(status.memory_usage.percent)}20;
+                                        width: 40px;
+                                        height: 40px;
+                                        border-radius: 50%;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        font-size: 1.2em;
+                                    ">
+                                        💾
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Disk Usage -->
+                            <div class="metric-card" style="
+                                background: rgba(30, 41, 59, 0.7);
+                                border-radius: 10px;
+                                padding: 15px;
+                                border-left: 4px solid ${getStatusColor(status.disk_usage.percent)};
+                                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                            ">
+                                <div style="display: flex; align-items: center; justify-content: space-between;">
+                                    <div>
+                                        <div style="font-size: 0.9em; color: #94a3b8;">Disk Usage</div>
+                                        <div style="font-size: 1.4em; font-weight: 600; color: ${getStatusColor(status.disk_usage.percent)};">
+                                            ${status.disk_usage.percent}%
+                                        </div>
+                                        <div style="font-size: 0.8em; color: #64748b; margin-top: 4px;">
+                                            ${status.disk_usage.used_gb.toFixed(1)}GB / ${status.disk_usage.total_gb.toFixed(1)}GB
+                                        </div>
+                                    </div>
+                                    <div style="
+                                        background: ${getStatusColor(status.disk_usage.percent)}20;
+                                        width: 40px;
+                                        height: 40px;
+                                        border-radius: 50%;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        font-size: 1.2em;
+                                    ">
+                                        💽
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } catch (error) {
+                    console.error('Error loading status:', error);
+                    document.getElementById('status-content').innerHTML = `
+                        <div style="color: #f44336; padding: 15px; background: rgba(244, 67, 54, 0.1); border-radius: 6px;">
+                            Error loading system status: ${error.message}
+                        </div>
+                    `;
+                }
             }
             async function loadConfig() {
                 try {
@@ -1038,8 +1311,6 @@ async function resetPromptDefault() {
                     html += '<strong>Active LLM:</strong> ' + configData.llm.active_provider + ' - ' + configData.llm.model;
                     html += '</div><div class="metric">';
                     html += '<strong>Temperature:</strong> ' + configData.llm.temperature;
-                    html += '</div><div class="metric">';
-                    html += '<strong>Embedding Model:</strong> ' + configData.embedding.model;
                     html += '</div><div class="metric">';
                     html += '<strong>Database:</strong> ' + configData.database.collection;
                     html += '</div><div class="metric">';
@@ -1057,63 +1328,580 @@ async function resetPromptDefault() {
                 }
             }
             async function loadActiveLLM() {
-                const response = await fetch('/admin/llm/active');
-                const data = await response.json();
-                let html = '<b>Currently Active LLM in Memory:</b> ';
-                if (data.provider) {
-                    html += data.provider + ' - ' + data.model;
-                } else {
-                    html += '<span style="color:#bbb;">(No LLM cached yet)</span>';
-                }
-                document.getElementById('active-llm-content').innerHTML = html;
-            }
-            async function loadModelTab() {
-                // Fetch current model/provider/embedding info from backend
                 try {
-                    const response = await fetch('/admin/model/current');
-                    const data = await response.json();
-                    document.getElementById('provider').value = data.provider;
-                    document.getElementById('groq_model').value = data.groq_model || 'llama3-70b-8192';
-                    document.getElementById('google_model').value = data.google_model || 'gemma-3-12b-it';
-                    document.getElementById('openrouter_model').value = data.openrouter_model || 'openai/gpt-4-turbo';
-                    document.getElementById('embedding_provider').value = data.embedding_provider || 'google';
-                    toggleModelInputs();
-                    toggleEmbeddingModelInput();
-                    document.getElementById('embedding_model_google').value = data.embedding_model_google || '';
-                    document.getElementById('embedding_model_cohere').value = data.embedding_model_cohere || '';
-                    
-                    // Update current model display
-                    let modelName = '';
-                    if (data.provider === 'groq') {
-                        modelName = data.groq_model || 'llama3-70b-8192';
-                    } else if (data.provider === 'google') {
-                        modelName = data.google_model || 'gemma-3-12b-it';
-                    } else if (data.provider === 'openrouter') {
-                        modelName = data.openrouter_model || 'openai/gpt-4-turbo';
+                    const response = await fetch('/admin/llm/active');
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
                     }
-                    document.getElementById('current-model').innerText = `${data.provider} - ${modelName}`;
-                } catch (e) {
-                    document.getElementById('model-status').innerHTML = '<span style="color:red;">Failed to load model info</span>';
+                    const data = await response.json();
+                    let html = '<b>Currently Active LLM in Memory:</b> ';
+                    
+                    // Safely handle the response data
+                    const provider = data?.provider || 'unknown';
+                    const model = data?.model || 'unknown';
+                    
+                    if (provider && provider !== 'unknown') {
+                        // Format provider name nicely (capitalize first letter)
+                        const formattedProvider = provider.charAt(0).toUpperCase() + provider.slice(1);
+                        html += `${formattedProvider} - ${model || 'default'}`;
+                        
+                        // Add status indicator
+                        if (data.is_initialized === false) {
+                            html += ' <span style="color: var(--warning);">(Not initialized yet)</span>';
+                        }
+                    } else if (data?.error) {
+                        // Show error if present
+                        html += `<span style="color: var(--danger);">Error: ${data.error}</span>`;
+                    } else {
+                        // No active LLM loaded yet
+                        html += '<span style="color:var(--text-muted);">(No LLM loaded yet)</span>';
+                    }
+                    
+                    // Update the UI
+                    const activeLLMContent = document.getElementById('active-llm-content');
+                    if (activeLLMContent) {
+                        activeLLMContent.innerHTML = html;
+                    }
+                } catch (error) { 
+                    console.error('Error loading active LLM:', error);
+                    const activeLLMContent = document.getElementById('active-llm-content'); 
+                    if (activeLLMContent) {
+                        activeLLMContent.innerHTML = `
+                            <div style="color: var(--danger);">
+                                Error loading active LLM: ${error.message || 'Unknown error'}
+                            </div>`;
+                    }
                 }
             }
-            async function saveModelConfig() {
-                const provider = document.getElementById('provider').value;
-                const groq_model = document.getElementById('groq_model').value;
-                const google_model = document.getElementById('google_model').value;
-                const openrouter_model = document.getElementById('openrouter_model').value;
+
+            async function loadModelTab() {
+                try {
+                    const modelContent = document.getElementById('model-content');
+                    if (!modelContent) {
+                        console.error('Model content container not found');
+                        return;
+                    }
+
+                    const response = await fetch('/admin/model/current');
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    } 
+                    const data = await response.json();
+                    
+                    // Debug: Log the received data
+                    console.log('Model data received:', data);
+                    
+                    // Model configuration section
+                    let tabsHtml = `
+                        <div style="margin-bottom: 20px;">
+                            <h3 style="margin-top: 0; color: var(--primary);">Model Configuration</h3>
+                            <p style="color: var(--text-muted); margin-bottom: 20px;">
+                                Configure your language models and API keys below. Each model can be updated independently.
+                            </p>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                    `;
+                    
+                    // Model cards
+                    const providers = [
+                        { id: 'groq', name: 'Groq', defaultModel: 'llama3-70b-8192' },
+                        { id: 'google', name: 'Google', defaultModel: 'gemma-3-12b-it' },
+                        { id: 'openrouter', name: 'OpenRouter', defaultModel: 'openai/gpt-4-turpo' },
+                        { id: 'openai', name: 'OpenAI', defaultModel: 'gpt-4o' }
+                    ];
+
+                    providers.forEach(provider => {
+                        const modelKey = `${provider.id}_model`;
+                        // Use lowercase for UI consistency, backend will handle the conversion
+                        const apiKeyKey = `${provider.id.toLowerCase()}_api_key`;
+                        
+                        // Debug: Log the keys being accessed
+                        console.log(`Processing provider ${provider.id}:`, {
+                            modelKey,
+                            modelValue: data[modelKey],
+                            apiKeyKey,
+                            apiKeyValue: data[apiKeyKey] ? '***' + data[apiKeyKey].slice(-4) : 'not found'
+                        });
+                        
+                        const modelValue = data[modelKey] || provider.defaultModel;
+                        const apiKeyValue = data[apiKeyKey] || '';
+                        const isActive = data.provider === provider.id.toLowerCase();
+                        
+                        tabsHtml += `
+                            <div class="model-card" style="
+                                background: var(--bg-card);
+                                border: 1.5px solid ${isActive ? 'var(--primary)' : 'var(--border)'};
+                                border-radius: 12px;
+                                padding: 22px;
+                                box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+                                transition: all 0.25s ease;
+                                position: relative;
+                                overflow: hidden;
+                                ${isActive ? 'border-left: 4px solid var(--primary);' : ''}
+                            ">
+                                ${isActive ? `
+                                <div style="position: absolute; top: 0; right: 0; background: var(--primary); color: white; padding: 2px 12px; border-bottom-left-radius: 8px; font-size: 0.8em; font-weight: 600;">
+                                    ACTIVE
+                                </div>
+                                ` : ''}
+                                
+                                <h3 style="margin: 0 0 15px 0; color: ${isActive ? 'var(--primary)' : 'var(--text)'}; font-size: 1.3em;">
+                                    ${provider.name}
+                                </h3>
+                                
+                                <div style="margin-bottom: 15px;">
+                                    <label for="${provider.id}_model" style="display: block; margin-bottom: 6px; color: var(--text-muted); font-size: 0.9em; font-weight: 500;">Model Name</label>
+                                    <input type="text" 
+                                           id="${provider.id}_model" 
+                                           value="${modelValue}" 
+                                           class="env-input" 
+                                           style="width: 100%; padding: 10px 12px; border-radius: 6px; background: rgba(255,255,255,0.03);">
+                                </div>
+                                
+                                <div class="api-key-group" style="margin-bottom: 15px; position: relative;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                                        <label for="${provider.id}_api_key_input" style="color: var(--text-muted); font-size: 0.9em; font-weight: 500;">API Key</label>
+                                        <div style="display: flex; gap: 8px;">
+                                            <button type="button" 
+                                                    onclick="toggleApiKeyVisibility(this)" 
+                                                    class="toggle-api-key"
+                                                    style="
+                                                        background: transparent;
+                                                        border: 1px solid var(--border);
+                                                        color: var(--text-muted);
+                                                        border-radius: 4px;
+                                                        padding: 2px 8px;
+                                                        font-size: 0.8em;
+                                                        cursor: pointer;
+                                                    ">
+                                                Show
+                                            </button>
+                                            <button type="button" 
+                                                    onclick="copyApiKey('${provider.id}_api_key_input')" 
+                                                    style="
+                                                        background: transparent;
+                                                        border: 1px solid var(--border);
+                                                        color: var(--text-muted);
+                                                        border-radius: 4px;
+                                                        padding: 2px 8px;
+                                                        font-size: 0.8em;
+                                                        cursor: pointer;
+                                                    ">
+                                                Copy 
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <input type="password" 
+                                           id="${provider.id}_api_key_input" 
+                                           name="${provider.id}_api_key"
+                                           value="${apiKeyValue}" 
+                                           class="env-input api-key-input" 
+                                           style="width: 100%; padding: 10px 12px; border-radius: 6px; background: rgba(255,255,255,0.03);"
+                                           placeholder="${provider.name} API key"
+                                           autocomplete="off">
+                                </div>
+                                
+                                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                                    <button type="button"
+                                            onclick="setActiveModel('${provider.id}')"
+                                            style="
+                                                flex: 1;
+                                                padding: 10px;
+                                                background: ${isActive ? 'var(--success)' : 'var(--primary)'};
+                                                border: 1px solid ${isActive ? 'var(--success)' : 'var(--primary)'};
+                                                color: white;
+                                                font-weight: 500;
+                                                border-radius: 6px;
+                                                cursor: pointer;
+                                                transition: all 0.2s;
+                                            "
+                                            onmouseover="this.style.opacity='0.9'"
+                                            onmouseout="this.style.opacity='1'">
+                                        ${isActive ? '✓ Active' : 'Set as Active'}
+                                    </button>
+                                    <button type="button"
+                                            onclick="saveModelConfig('${provider.id}')"
+                                            style="
+                                                padding: 10px 15px;
+                                                background: rgba(255,255,255,0.05);
+                                                border: 1px solid var(--border);
+                                                color: var(--text);
+                                                border-radius: 6px;
+                                                cursor: pointer;
+                                                transition: all 0.2s;
+                                            "
+                                            onmouseover="this.style.opacity='0.9'"
+                                            onmouseout="this.style.opacity='1'">
+                                        Update
+                                    </button>
+                                </div>
+                                <div id="${provider.id}-status" style="margin-top: 8px; font-size: 0.85em; min-height: 20px;"></div>
+                            </div>
+                        `;
+                    });
+
+                    // Close model cards grid
+                    tabsHtml += `
+                            </div>
+                        </div>
+                        <input type="hidden" id="model-priority-current" value="${data.MODEL_PRIORITY || '1,2,3'}">
+                    `;
+
+                    // Only update the content if we have a valid container
+                    modelContent.innerHTML = tabsHtml;
+                    
+                } catch (e) {
+                    console.error('Error loading model tab:', e);
+                    const errorMessage = `Failed to load model info: ${e.message}`;
+                    console.error(errorMessage);
+                    
+                    // Try to update the status element if it exists
+                    const statusElement = document.getElementById('model-status');
+                    if (statusElement) {
+                        statusElement.innerHTML = `<span style="color:red;">${errorMessage}</span>`;
+                    } else {
+                        // If status element doesn't exist, log to console
+                        console.error('Status element not found for error display');
+                    }
+                }
+            }
+            // Toggle API key visibility
+            function toggleApiKeyVisibility(button) {
+                try {
+                    // Find the input element - it's the previous sibling of the button's parent
+                    const inputGroup = button.closest('.api-key-group');
+                    if (!inputGroup) {
+                        console.error('API key group not found');
+                        return;
+                    }
+                    const input = inputGroup.querySelector('input[type="password"], input[type="text"]');
+                    if (input) {
+                        if (input.type === 'password') {
+                            input.type = 'text';
+                            button.textContent = 'Hide';
+                        } else {
+                            input.type = 'password';
+                            button.textContent = 'Show';
+                        }
+                    } else {
+                        console.error('Could not find API key input field in group');
+                    }
+                } catch (error) {
+                    console.error('Error in toggleApiKeyVisibility:', error);
+                }
+            }
+
+            // Copy API key to clipboard
+            async function copyApiKey(inputId) {
+                const input = document.getElementById(inputId);
+                try {
+                    await navigator.clipboard.writeText(input.value);
+                    const copyBtn = input.parentElement.querySelector('button[onclick^="copyApiKey"]');
+                    const originalText = copyBtn.textContent;
+                    copyBtn.textContent = 'Copied!';
+                    copyBtn.style.borderColor = 'var(--success)';
+                    copyBtn.style.color = 'var(--success)';
+                    setTimeout(() => { 
+                        copyBtn.textContent = originalText;
+                        copyBtn.style.borderColor = 'var(--border)';
+                        copyBtn.style.color = 'var(--text-muted)';
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy:', err);
+                }
+            }
+
+            // Set the active model
+            async function setActiveModel(provider) {
+                const statusElement = document.getElementById(`${provider}-status`);
+                const button = document.querySelector(`button[onclick^="setActiveModel('${provider}')"]`);
+                
+                if (!button) {
+                    console.error('Active model button not found for provider:', provider);
+                    return;
+                }
+                
+                const originalButtonText = button.textContent;
+                button.disabled = true;
+                button.textContent = 'Activating...';
+                if (statusElement) {
+                    statusElement.innerHTML = '<span style="color: var(--text-muted);">Activating model...</span>';
+                }
+                
+                try {
+                    // First save the current configuration with isFromSetActive flag
+                    await saveModelConfig(provider, false, true);
+                    
+                    // Then set as active
+                    const response = await fetch('/admin/model/set-active', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ provider: provider })
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (!response.ok) {
+                        throw new Error(result.detail || 'Failed to set active model');
+                    }
+                    
+                    // Update the UI to show the active status
+                    const providerCards = document.querySelectorAll('.model-card');
+                    providerCards.forEach(card => {
+                        const cardProvider = card.querySelector('h3')?.textContent?.toLowerCase();
+                        if (cardProvider === provider.toLowerCase()) {
+                            card.style.borderLeft = '4px solid var(--primary)';
+                            const activeBadge = card.querySelector('.active-badge');
+                            if (activeBadge) {
+                                activeBadge.style.display = 'block';
+                            }
+                        } else {
+                            card.style.borderLeft = '1.5px solid var(--border)';
+                            const otherBadge = card.querySelector('.active-badge');
+                            if (otherBadge) {
+                                otherBadge.style.display = 'none';
+                            }
+                        }
+                    });
+                    
+                    // Update the active model display
+                    await loadActiveLLM();
+                    
+                    // Show success notification
+                    showNotification(
+                        `${provider.charAt(0).toUpperCase() + provider.slice(1)} is now the active model`,
+                        'success'
+                    );
+                    
+                    // Update the button text
+                    button.textContent = '✓ Active';
+                    button.style.background = 'var(--success)';
+                    button.style.borderColor = 'var(--success)';
+                    
+                } catch (error) {
+                    console.error('Error setting active model:', error);
+                    if (statusElement) {
+                        statusElement.innerHTML = `<span style="color: var(--danger);">Error: ${error.message}</span>`;
+                    }
+                    showNotification(`Error: ${error.message}`, 'error');
+                } finally {
+                    button.disabled = false;
+                    button.textContent = originalButtonText;
+                }
+            }
+            
+            // Save model configuration
+            async function saveModelConfig(provider, showNotif = true, isFromSetActive = false) {
+                const modelInput = document.getElementById(`${provider}_model`);
+                const apiKeyInput = document.getElementById(`${provider}_api_key_input`);
+                const statusElement = document.getElementById(`${provider}-status`);
+                
+                // Only get the save button, not the set active button
+                const buttons = document.querySelectorAll(`button[onclick^="saveModelConfig('${provider}')"]`);
+                const button = buttons[0]; // Use the first matching button
+                
+                if (!button) {
+                    console.error('Save button not found for provider:', provider);
+                    return;
+                }
+                
+                // Update UI immediately for better UX
+                const originalButtonText = button.textContent;
+                button.disabled = true;
+                button.textContent = 'Saving...';
+                if (statusElement) {
+                    statusElement.innerHTML = '';
+                }
+                
+                try {
+                    // Get current model values
+                    const groqModel = provider === 'groq' ? modelInput.value : document.getElementById('groq_model')?.value || 'llama3-70b-8192';
+                    const googleModel = provider === 'google' ? modelInput.value : document.getElementById('google_model')?.value || 'gemma-3-12b-it';
+                    const openrouterModel = provider === 'openrouter' ? modelInput.value : document.getElementById('openrouter_model')?.value || 'openai/gpt-4-turpo';
+                    
+                    // Prepare payload for the model update
+                    const payload = {
+                        provider: provider,
+                        groq_model: groqModel,
+                        google_model: googleModel,
+                        openrouter_model: openrouterModel,
+                        embedding_provider: 'google',  // Default value, can be updated if needed
+                        embedding_model_google: 'models/embedding-001',  // Default value
+                        embedding_model_cohere: ''  // Default value
+                    };
+                    
+                    // Update the model configuration
+                    const updateResponse = await fetch('/admin/model/update', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    const result = await updateResponse.json(); 
+                    
+                    if (!updateResponse.ok) {
+                        throw new Error(result.detail || 'Failed to update model configuration');
+                    }
+                    
+                    // Update the API key in the environment if provided
+                    if (apiKeyInput && apiKeyInput.value) {
+                        try {
+                            const keyResponse = await fetch('/admin/env/update', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    // Convert to uppercase for backend compatibility
+                                    key: `${provider.toUpperCase()}_API_KEY`,
+                                    value: apiKeyInput.value,
+                                    description: `${provider.charAt(0).toUpperCase() + provider.slice(1)} API Key`
+                                })
+                            });
+                            
+                            if (!keyResponse.ok) {
+                                const keyResult = await keyResponse.json();
+                                throw new Error(keyResult.detail || 'Failed to update API key');
+                            }
+                            
+                            // Update the model name in environment
+                            const modelKey = `${provider.toUpperCase()}_MODEL`;
+                            const modelResponse = await fetch('/admin/env/update', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    key: modelKey,
+                                    value: modelInput.value,
+                                    description: `${provider.charAt(0).toUpperCase() + provider.slice(1)} Model`
+                                })
+                            });
+                            
+                            if (!modelResponse.ok) {
+                                const modelResult = await modelResponse.json();
+                                console.warn('Model name update warning:', modelResult.detail);
+                            }
+                            
+                        } catch (keyError) {
+                            console.warn('API key or model update warning:', keyError);
+                            // Don't fail the entire operation if just the API key or model update fails
+                            if (typeof window.showNotification === 'function') {
+                                window.showNotification(`Warning: ${keyError.message}`, 'warning');
+                            } else {
+                                console.log('Notification system not available');
+                            }
+                        }
+                    }
+                    
+                    // Only show success notification if not called from setActiveModel or if explicitly requested
+                    if (showNotif && !isFromSetActive) {
+                        if (typeof window.showNotification === 'function') {
+                            window.showNotification(`${provider.charAt(0).toUpperCase() + provider.slice(1)} settings saved successfully!`, 'success');
+                        } else {
+                            console.log('Notification system not available');
+                        }
+                    }
+                    
+                } catch (error) {
+                    console.error('Error saving model config:', error);
+                    const errorMessage = error.message || 'An unknown error occurred';
+                    statusElement.innerHTML = `<span style="color: var(--danger);">Error: ${errorMessage}</span>`;
+                    showNotification(`Error: ${errorMessage}`, 'error');
+                } finally {
+                    button.disabled = false;
+                    button.textContent = originalButtonText;
+                    
+                    // Reload the model tab to show updated status
+                    loadModelTab();
+                }
+            }
+            
+            // Show notification
+            function showNotification(message, type = 'info') {
+                const container = document.getElementById('notification-container');
+                if (!container) return;
+                
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.style.cssText = `
+                    background: var(--bg-card);
+                    border-left: 4px solid ${type === 'error' ? 'var(--danger)' : 'var(--success)'};
+                    border-radius: 4px;
+                    padding: 12px 16px;
+                    margin-bottom: 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    max-width: 400px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                    animation: slideIn 0.3s ease-out;
+                `;
+                
+                notification.innerHTML = `
+                    <div>${message}</div>
+                    <button onclick="this.parentElement.remove()" style="
+                        background: none;
+                        border: none;
+                        color: var(--text-muted);
+                        cursor: pointer;
+                        font-size: 18px;
+                        margin-left: 10px;
+                        padding: 0 5px;
+                    ">&times;</button>
+                `;
+                
+                container.appendChild(notification);
+                
+                // Auto-remove after 5 seconds
+                setTimeout(() => { 
+                    notification.style.animation = 'fadeOut 0.3s ease-out';
+                    setTimeout(() => notification.remove(), 300);
+                }, 5000);
+            }
+            
+            // Add notification container if it doesn't exist
+            if (!document.getElementById('notification-container')) {
+                const container = document.createElement('div');
+                container.id = 'notification-container';
+                container.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    z-index: 1000;
+                `;
+                document.body.appendChild(container);
+                
+                // Add styles for notifications
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes slideIn {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                    @keyframes fadeOut {
+                        from { opacity: 1; transform: translateX(0); }
+                        to { opacity: 0; transform: translateX(100%); }
+                    }
+                    .notification {
+                        transition: all 0.3s ease;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            // Save model configuration
+            async function saveEmbeddingConfig() {
                 const embedding_provider = document.getElementById('embedding_provider').value;
-                let embedding_model_google = document.getElementById('embedding_model_google').value;
-                let embedding_model_cohere = document.getElementById('embedding_model_cohere').value;
-                const payload = { 
-                    provider, 
-                    groq_model, 
-                    google_model, 
-                    openrouter_model,
-                    embedding_provider, 
-                    embedding_model_google, 
-                    embedding_model_cohere 
+                const embedding_model_google = document.getElementById('embedding_model_google')?.value || '';
+                const embedding_model_cohere = document.getElementById('embedding_model_cohere')?.value || '';
+                
+                const payload = {
+                    provider: 'embedding',
+                    embedding_provider,
+                    embedding_model_google,
+                    embedding_model_cohere
                 };
-                document.getElementById('model-status').innerHTML = '<span style="color:orange;">Saving...</span>';
+
+                const statusElement = document.getElementById('embedding-status');
+                statusElement.innerHTML = '<span style="color:orange;">Saving...</span>';
+                
                 try {
                     const response = await fetch('/admin/model/update', {
                         method: 'POST',
@@ -1122,82 +1910,264 @@ async function resetPromptDefault() {
                     });
                     const result = await response.json();
                     if (result.status === 'success') {
-                        document.getElementById('model-status').innerHTML = '<span style="color:lightgreen;">' + result.message + '</span>';
-                        await loadModelTab();
+                        statusElement.innerHTML = '<span style="color:lightgreen;">' + result.message + '</span>';
                         await loadConfig();
                     } else {
-                        document.getElementById('model-status').innerHTML = '<span style="color:red;">' + result.message + '</span>';
+                        statusElement.innerHTML = '<span style="color:red;">' + result.message + '</span>';
                     }
                 } catch (e) {
-                    document.getElementById('model-status').innerHTML = '<span style="color:red;">Failed to save</span>';
+                    statusElement.innerHTML = '<span style="color:red;">Failed to save: ' + e.message + '</span>';
                 }
             }
+
             async function toggleEmbeddingModelInput() {
                 const embeddingProvider = document.getElementById('embedding_provider').value;
                 const embeddingModelInputs = document.getElementById('embedding-model-inputs');
-                const googleModelInput = document.getElementById('embedding_model_google');
-                const cohereModelInput = document.getElementById('embedding_model_cohere');
-
+                
+                let html = '';
                 if (embeddingProvider === 'google') {
-                    googleModelInput.style.display = 'block';
-                    cohereModelInput.style.display = 'none';
-                    googleModelInput.setAttribute('required', 'required');
-                    cohereModelInput.removeAttribute('required');
+                    html = `
+                        <div style="margin-bottom: 15px;">
+                            <label for="embedding_model_google">Google Embedding Model</label>
+                            <input type="text" 
+                                   id="embedding_model_google" 
+                                   class="env-input" 
+                                   placeholder="e.g., models/embedding-001"
+                                   style="width: 100%;">
+                        </div>
+                    `;
                 } else if (embeddingProvider === 'cohere') {
-                    googleModelInput.style.display = 'none';
-                    cohereModelInput.style.display = 'block';
-                    googleModelInput.removeAttribute('required');
-                    cohereModelInput.setAttribute('required', 'required');
+                    html = `
+                        <div style="margin-bottom: 15px;">
+                            <label for="embedding_model_cohere">Cohere Embedding Model</label>
+                            <input type="text" 
+                                   id="embedding_model_cohere" 
+                                   class="env-input" 
+                                   placeholder="e.g., embed-english-v3.0"
+                                   style="width: 100%;">
+                            <div style="margin-top: 10px; position: relative;">
+                                <label for="cohere_api_key" style="display: block; margin-bottom: 5px;">Cohere API Key</label>
+                                <div style="display: flex; gap: 5px;">
+                                    <input type="password" 
+                                           id="cohere_api_key" 
+                                           class="env-input" 
+                                           style="flex-grow: 1;"
+                                           placeholder="Enter Cohere API key">
+                                    <button class="button" 
+                                            onclick="toggleApiKeyVisibility(this)" 
+                                            style="min-width: 80px;">
+                                        Show
+                                    </button>
+                                    <button class="button" 
+                                            onclick="copyApiKey('cohere_api_key')" 
+                                            style="min-width: 80px;">
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                if (embeddingModelInputs) {
+                    embeddingModelInputs.innerHTML = html;
                 }
             }
+            // Add CSS for the configuration tab
+            const configStyles = document.createElement('style');
+            configStyles.textContent = `
+                .config-container {
+                    max-width: 1000px;
+                    margin: 0 auto;
+                }
+                .config-section {
+                    background: #1e1e1e;
+                    border-radius: 10px;
+                    padding: 20px;
+                    margin-bottom: 25px;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                    border: 1px solid #2a2a2a;
+                }
+                .section-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 20px;
+                    padding-bottom: 12px;
+                    border-bottom: 1px solid #2a2a2a;
+                }
+                .section-title {
+                    font-size: 1.2em;
+                    color: var(--primary);
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+                .config-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                    gap: 20px;
+                }
+                .config-item {
+                    background: #252525;
+                    border-radius: 8px;
+                    padding: 15px;
+                    border: 1px solid #2f2f2f;
+                }
+                .config-label {
+                    font-size: 0.85em;
+                    color: #9e9e9e;
+                    margin-bottom: 8px;
+                }
+                .config-input {
+                    width: 100%;
+                    padding: 10px 12px;
+                    background: #1a1a1a;
+                    border: 1px solid #333;
+                    border-radius: 6px;
+                    color: #e0e0e0;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.95em;
+                }
+                .config-input:focus {
+                    outline: none;
+                    border-color: var(--primary);
+                }
+                .config-description {
+                    font-size: 0.8em;
+                    color: #777;
+                    margin-top: 8px;
+                }
+                .config-actions {
+                    margin-top: 15px;
+                    text-align: right;
+                }
+                .empty-state {
+                    text-align: center;
+                    padding: 40px 20px;
+                    background: #1e1e1e;
+                    border-radius: 8px;
+                    border: 1px dashed #333;
+                }
+                @media (max-width: 768px) {
+                    .config-grid {
+                        grid-template-columns: 1fr;
+                    }
+                }
+            `;
+            document.head.appendChild(configStyles);
+
             async function loadEnvConfig() {
                 try {
                     const response = await fetch('/admin/env');
                     envData = await response.json();
+                    const envContent = document.getElementById('env-content');
+                    
                     if (Object.keys(envData.variables).length === 0) {
-                        document.getElementById('env-content').innerHTML = `
-                            <div class="env-section">
-                                <p><strong>No .env file found.</strong> The system is using default configuration values.</p>
-                                <p>To customize settings, create a .env file in the project root with the following variables:</p>
-                                <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; font-family: monospace; font-size: 0.9em;">
-                                    <div># LLM Configuration</div>
-                                    <div>GROQ_API_KEY=your_api_key_here</div>
-                                    <div>GROQ_MODEL=llama3-70b-8192</div>
-                                    <div>GOOGLE_API_KEY=your_api_key_here</div>
-                                    <div>GOOGLE_MODEL=gemma-3-12b-it</div>
-                                    <div>MODEL_PRIORITY=1</div>
-                                    <div>TEMPERATURE=0.1</div>
-                                    <div><br></div>
-                                    <div># Database Configuration</div>
-                                    <div>QDRANT_URL=http://localhost:6333</div>
-                                    <div>QDRANT_COLLECTION=hr_documents</div>
-                                    <div><br></div>
-                                    <div># Embedding Configuration</div>
-                                    <div>EMBEDDING_MODEL=models/embedding-001</div>
-                                    <div><br></div>
-                                    <div># Server Configuration</div>
-                                    <div>PORT=8000</div>
-                                    <div>WORKERS=4</div>
-                                </div>
-                                <p><strong>Current active configuration is shown in the System Status tab.</strong></p>
+                        envContent.innerHTML = `
+                            <div class="empty-state">
+                                <h3>No Configuration Found</h3>
+                                <p>The system is using default configuration values.</p>
+                                <p>Create a .env file in the project root to customize settings.</p>
                             </div>
                         `;
                         return;
                     }
-                    let html = '<div class="env-section">';
+                    
+                    // Filter out model-related environment variables
+                    const modelRelatedKeys = [
+                        'GROQ_API_KEY', 'GROQ_MODEL',
+                        'GOOGLE_API_KEY', 'GOOGLE_MODEL',
+                        'OPENROUTER_API_KEY', 'OPENROUTER_MODEL',
+                        'MODEL_PRIORITY', 'TEMPERATURE',
+                        'OPENAI_API_KEY', 'OPENAI_MODEL',
+
+                    ];
+                    
+                    // Categorize variables
+                    const categories = {
+                        database: { title: 'Database', items: [] },
+                        server: { title: 'Server', items: [] },
+                        other: { title: 'Other', items: [] }
+                    };
+                    
+                    let hasNonModelVars = false;
+                    
                     for (const [key, value] of Object.entries(envData.variables)) {
+                        if (modelRelatedKeys.includes(key)) continue;
+                        
+                        hasNonModelVars = true;
                         const description = envData.descriptions[key] || 'No description available';
+                        const item = { key, value, description };
+                        
+                        // Categorize the variable
+                        if (key.startsWith('QDRANT_') || key.includes('DATABASE') || key.includes('DB_')) {
+                            categories.database.items.push(item);
+                        } else if (key === 'PORT' || key === 'WORKERS' || key.includes('HOST') || key.includes('URL')) {
+                            categories.server.items.push(item);
+                        } else {
+                            categories.other.items.push(item);
+                        }
+                    }
+                    
+                    let html = '<div class="config-container">';
+                    
+                    // Render each category
+                    for (const [category, data] of Object.entries(categories)) {
+                        if (data.items.length === 0) continue;
+                        
                         html += `
-                            <div class="env-description">${description}</div>
-                            <input type="text" class="env-input" id="env_${key}" value="${value}" placeholder="${key}">
-                            <button class="button button-success" onclick="updateEnvVar('${key}')">Update</button>
-                            <br><br>
+                            <div class="config-section">
+                                <div class="section-header">
+                                    <h3 class="section-title">${data.title} Configuration</h3>
+                                </div>
+                                <div class="config-grid">
+                        `;
+                        
+                        // Add config items
+                        data.items.forEach(item => {
+                            html += `
+                                <div class="config-item">
+                                    <div class="config-label">${item.key}</div>
+                                    <input 
+                                        type="text" 
+                                        class="config-input" 
+                                        id="env_${item.key}" 
+                                        value="${item.value}"
+                                        placeholder="${item.key}"
+                                    >
+                                    <div class="config-description">${item.description}</div>
+                                    <div class="config-actions">
+                                        <button class="button button-small" onclick="updateEnvVar('${item.key}')">
+                                            Update
+                                        </button>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                        
+                        html += '</div></div>';
+                    }
+                    
+                    if (!hasNonModelVars) {
+                        html += `
+                            <div class="empty-state">
+                                <h3>No Configuration Variables</h3>
+                                <p>All model-related configurations are managed in the <strong>Model</strong> tab.</p>
+                            </div>
                         `;
                     }
+                    
                     html += '</div>';
-                    document.getElementById('env-content').innerHTML = html;
+                    envContent.innerHTML = html;
+                    
                 } catch (error) {
-                    document.getElementById('env-content').innerHTML = '<p style="color: red;">Error loading environment configuration: ' + error.message + '</p>';
+                    document.getElementById('env-content').innerHTML = `
+                        <div class="empty-state" style="border-color: #ff6b6b;">
+                            <h3>Error Loading Configuration</h3>
+                            <p>${error.message}</p>
+                        </div>
+                    `;
                 }
             }
             async function updateEnvVar(key) {
@@ -1399,7 +2369,7 @@ async function resetPromptDefault() {
                     showToast('Action failed: ' + e, 'error');
                 }
             }
-            loadStatus();
+            loadStatus(); 
             loadConfig();
             loadActiveLLM();
             setInterval(() => {
@@ -1417,32 +2387,54 @@ async function resetPromptDefault() {
 
 @router.get("/model/current")
 async def get_current_model_config():
-    cfg = get_config()
-    # Determine embedding provider and model
-    embedding_provider = "google"
-    embedding_model_google = cfg.embedding.google_model
-    embedding_model_cohere = cfg.embedding.cohere_model if hasattr(cfg.embedding, 'cohere_model') else ""
-    # If cohere_model is set and not default, prefer cohere
-    if embedding_model_cohere and embedding_model_cohere != "embed-english-v3.0":
-        embedding_provider = "cohere"
-    
-    # Get active LLM config
-    llm_config = cfg.get_active_llm_config()
-    
-    return {
-        "provider": llm_config["provider"],
-        "priority": cfg.llm.model_priority,
-        "groq_model": cfg.llm.groq_model,
-        "google_model": cfg.llm.google_model,
-        "openrouter_model": cfg.llm.openrouter_model,
-        "embedding_provider": embedding_provider,
-        "embedding_model_google": embedding_model_google,
-        "embedding_model_cohere": embedding_model_cohere
-    }
+    try:
+        cfg = get_config()
+        
+        # Get the active LLM configuration with error handling
+        llm_config = cfg.get_active_llm_config()
+        if not isinstance(llm_config, dict):
+            llm_config = {}
+            
+        # Get API keys from environment
+        env_vars = admin_dashboard.read_env_file()
+        
+        # Get model priority with fallback
+        model_priority = getattr(cfg.llm, 'model_priority', '1,2,3')
+        
+        # Build the response with fallback values
+        response = {
+            "provider": llm_config.get("provider", ""),
+            "priority": model_priority,
+            "groq_model": getattr(cfg.llm, 'groq_model', 'llama3-70b-8192'),
+            "google_model": getattr(cfg.llm, 'google_model', 'gemma-3-12b-it'),
+            "openrouter_model": getattr(cfg.llm, 'openrouter_model', 'openai/gpt-4-turpo'),
+            "groq_api_key": env_vars.get("GROQ_API_KEY", ""),
+            "google_api_key": env_vars.get("GOOGLE_API_KEY", ""),
+            "openrouter_api_key": env_vars.get("OPENROUTER_API_KEY", ""),
+            "status": "success"
+        }
+        
+        return response
+        
+    except Exception as e:
+        logger.error(f"Error in get_current_model_config: {str(e)}")
+        # Return a safe default configuration if there's an error
+        return {
+            "provider": "error",
+            "priority": "1,2,3",
+            "groq_model": "llama3-70b-8192",
+            "google_model": "gemma-3-12b-it",
+            "openrouter_model": "openai/gpt-4-turpo",
+            "groq_api_key": "",
+            "google_api_key": "",
+            "openrouter_api_key": "",
+            "status": "error",
+            "error": str(e)
+        }
 
 @router.post("/model/update")
 async def update_model_config(request: ModelUpdateRequest = Body(...)):
-    provider_map = {"openrouter": 1, "google": 2, "groq": 3}
+    provider_map = {"openrouter": 1, "google": 2, "groq": 3 , "openai": 4}
     new_priority = provider_map.get(request.provider.lower(), 1)
     env_vars = admin_dashboard.read_env_file()
     
@@ -1451,14 +2443,7 @@ async def update_model_config(request: ModelUpdateRequest = Body(...)):
     env_vars["GROQ_MODEL"] = request.groq_model
     env_vars["GOOGLE_MODEL"] = request.google_model
     env_vars["OPENROUTER_MODEL"] = request.openrouter_model
-    
-    # Embedding provider/model logic
-    if request.embedding_provider == "google":
-        env_vars["EMBEDDING_MODEL"] = request.embedding_model_google
-        env_vars["COHERE_EMBEDDING_MODEL"] = ""
-    elif request.embedding_provider == "cohere":
-        env_vars["EMBEDDING_MODEL"] = ""
-        env_vars["COHERE_EMBEDDING_MODEL"] = request.embedding_model_cohere
+    env_vars["OPENAI_MODEL"] = request.openai_model
     
     # Save and reload environment
     admin_dashboard.write_env_file(env_vars)
@@ -1477,13 +2462,78 @@ async def update_model_config(request: ModelUpdateRequest = Body(...)):
 @router.get("/llm/active")
 async def get_active_llm():
     try:
-        from ingestion_retrieval import retrieval
-        llm = getattr(retrieval, '_llm_cache', None)
-        if llm is None:
-            return {"provider": None, "model": None}
-        # Try to get provider/model info from the LLM object
-        provider = getattr(llm, '__class__', type(llm)).__name__
-        model = getattr(llm, 'model', None) or getattr(llm, '_model', None)
-        return {"provider": provider, "model": model}
+        cfg = get_config()
+        active_llm = cfg.get_active_llm_config()
+        
+        # Ensure we always return a consistent structure
+        provider = active_llm.get("provider", "unknown")
+        model = active_llm.get("model", "")
+        
+        # If model is empty but we have provider-specific model settings
+        if not model and provider == "groq":
+            model = cfg.llm.groq_model
+        elif not model and provider == "google":
+            model = cfg.llm.google_model
+        elif not model and provider == "openrouter":
+            model = cfg.llm.openrouter_model
+            
+        return {
+            "provider": provider,
+            "model": model or "default",
+            "is_initialized": active_llm.get("is_initialized", False)
+        }
     except Exception as e:
-        return {"provider": None, "model": None, "error": str(e)} 
+        logger.error(f"Error getting active LLM: {str(e)}")
+        return {
+            "provider": "error",
+            "model": "unknown",
+            "error": str(e)
+        }
+
+@router.post("/model/set-active")
+async def set_active_model(request: dict = Body(...)):
+    try:
+        provider = request.get('provider')
+        if not provider:
+            raise HTTPException(status_code=400, detail="Provider is required")
+        
+        # Update the model priority based on the provider
+        provider_map = {"openrouter": 1, "google": 2, "groq": 3, "openai": 4}
+        if provider.lower() not in provider_map:
+            raise HTTPException(status_code=400, detail=f"Invalid provider: {provider}")
+            
+        # Update the environment variables
+        env_vars = admin_dashboard.read_env_file()
+        env_vars["MODEL_PRIORITY"] = str(provider_map[provider.lower()])
+        admin_dashboard.write_env_file(env_vars)
+        
+        # Reload the environment
+        load_dotenv(override=True)
+        
+        # Invalidate the LLM cache to ensure the new model is used
+        try:
+            from ingestion_retrieval.retrieval import invalidate_cache
+            invalidate_cache()
+            
+            # Get the current config to return the active model info
+            cfg = get_config()
+            llm_config = cfg.get_active_llm_config()
+            
+            return {
+                "status": "success",
+                "message": f"Successfully activated {provider} model",
+                "provider": provider,
+                "model": llm_config.get('model_name', 'unknown')
+            }
+            
+        except Exception as e:
+            raise HTTPException(
+                status_code=500,
+                detail=f"Failed to update model cache: {str(e)}"
+            )
+            
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to set active model: {str(e)}"
+        ) 

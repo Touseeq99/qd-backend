@@ -2,10 +2,7 @@ import os
 import re
 import logging
 import time
-import traceback
-from langchain_core.prompts import PromptTemplate
 import asyncio
-import numpy as np
 from qdrant_client import QdrantClient, models
 from qdrant_client.http.models import Distance, SparseVectorParams, VectorParams
 from langchain_qdrant import QdrantVectorStore, FastEmbedSparse, RetrievalMode
@@ -22,6 +19,7 @@ import json
 from typing import List
 from pydantic import SecretStr
 from config import get_config
+from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from sentence_transformers import SentenceTransformer
 logger = logging.getLogger(__name__)
 
@@ -44,6 +42,7 @@ _current_collection_name = None
 
 # Async function using Groq to rewrite a query
 async def rewrite_query_with_groq(query: str) -> str:
+    start_time = time.time()
     try:
         # Initialize LLM
         groq_llm = ChatGroq(
@@ -65,6 +64,7 @@ Adding relevant HR context (e.g., employee grade, department, HR term like “le
 
 Making it sound like a formal question that fits HR documentation style.
 
+If Query is in another language, change it into English First
 Do not add any formatting, explanation, or notes—return only the rewritten query as plain text.
 
 User Query:
@@ -79,7 +79,7 @@ Rewritten Query:
         task = asyncio.create_task(groq_llm.ainvoke(input=rewrite_prompt_template))
 
         try:
-            response = await asyncio.wait_for(task, timeout=5.0)
+            response = await asyncio.wait_for(task,timeout=20.0)
 
             if response and hasattr(response, 'content'):
                 cleaned = response.content.strip()
@@ -110,6 +110,7 @@ Rewritten Query:
             logger.warning(f"GROQ rewrite failed: {e}")
             if not task.done():
                 task.cancel()
+            logger.info(f"Query rewrite completed in {time.time() - start_time:.2f} seconds")
             return query
 
     except Exception as outer:
@@ -120,6 +121,7 @@ async def format_query(query: str) -> str:
     Format the query by first rewriting it for better specificity,
     then prepending the required string for retrieval.
     """
+    start_time = time.time()
     try:
         # First rewrite the query for better specificity
         rewritten_query = await rewrite_query_with_groq(query)
@@ -129,13 +131,17 @@ async def format_query(query: str) -> str:
     except Exception as e:
         logger.error(f"Error in format_query: {str(e)}")
         # Fallback to original query if rewriting fails
+        logger.info(f"Query formatting completed in {time.time() - start_time:.2f} seconds")
         return "Represent this sentence for searching relevant passages: " + query 
 
 def sanitize_input(user_input: str) -> str:
+    start_time = time.time()
     user_input = re.sub(r'\b[\w.-]+?@\w+?\.\w+?\b', '[REDACTED_EMAIL]', user_input)
     user_input = re.sub(r'\b\d{10,13}\b', '[REDACTED_PHONE]', user_input)
     user_input = re.sub(r'[{}<>[\]`$]', '', user_input)
-    return user_input.strip()
+    result = user_input.strip()
+    logger.debug(f"Input sanitization completed in {time.time() - start_time:.4f} seconds")
+    return result
 
 # -------------------------
 # ✅ HR Prompt Template (No Welcome Message)
@@ -151,13 +157,14 @@ hr_prompt = ChatPromptTemplate.from_template(prompt)
 # -------------------------
 def load_llm():
     global _llm_cache
+    start_time = time.time()
     if _llm_cache is not None:
+        logger.debug(f"LLM loaded from cache in {time.time() - start_time:.2f} seconds")
         return _llm_cache
     logger.info("[LLM CACHE] Loading LLM due to cache miss or invalidation...")
     try:
         # Import config here to avoid circular imports
         from config import get_config
-        from langchain_openai import ChatOpenAI
         
         config = get_config()
         llm_config = config.get_active_llm_config() 
@@ -183,18 +190,18 @@ def load_llm():
                 api_key=llm_config['api_key'],
                 temperature=llm_config.get('temperature', 0.1)
             )
+        elif llm_config['provider'] == 'openai':
+            _llm_cache = ChatOpenAI(
+                model_name=llm_config['model'],
+                openai_api_key=llm_config['api_key'],
+            )
         else:
             # Fallback to OpenRouter
             _llm_cache = ChatOpenAI(
-                model_name="openai/gpt-4o",
-                temperature=0.8,
-                streaming=True,
-                openai_api_key=os.getenv("OPENROUTER_API_KEY"),
-                base_url="https://openrouter.ai/api/v1",
-                default_headers={
-                    "HTTP-Referer": os.getenv("OPENROUTER_SITE_URL", "https://your-site-url.com"),
-                    "X-Title": os.getenv("OPENROUTER_SITE_NAME", "HR Assistant"),
-                },
+                model_name=llm_config['model'],
+                openai_api_base=llm_config.get('api_base', "https://openrouter.ai/api/v1"),
+                temperature=llm_config.get('temperature', 0.1),
+                openai_api_key=llm_config['api_key'],
             )
         
         return _llm_cache
@@ -342,9 +349,15 @@ def initialize_embeddings_and_vector_store(qdrant_url: str, qdrant_api: str, col
             except Exception as e:
                 logger.error(f"Error in async embed query: {str(e)}")
                 raise
-    
+            from config import get_config
+        
+    config = get_config()
+    llm_config = config.get_active_llm_config() 
     # Initialize the embeddings
-    embeddings = SentenceTransformerEmbeddings()
+    if llm_config['provider'] == 'openai':
+        embeddings = OpenAIEmbeddings(model_name="text-embedding-3-large",dimensions=768)
+    else:
+        embeddings = SentenceTransformerEmbeddings()
     
     # Initialize sparse embeddings
     sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
@@ -389,6 +402,7 @@ def initialize_embeddings_and_vector_store(qdrant_url: str, qdrant_api: str, col
     return embeddings, sparse_embeddings, _qdrant_client, _vector_store
 
 def get_hr_assistant_chain(qdrant_url: str, qdrant_api: str, collection_name: str) -> Runnable:
+    start_time = time.time()
     global _qdrant_client, _vector_store, _chain_cache
     
     # Check if we need to invalidate cache due to connection changes
@@ -429,8 +443,8 @@ def get_hr_assistant_chain(qdrant_url: str, qdrant_api: str, collection_name: st
             base_retriever = _vector_store.as_retriever(
                 search_type="mmr",
                 search_kwargs={
-                    "k": min(config.vector_search.search_k,12), 
-                    "lambda_mult": 0.6,
+                    "k": min(config.vector_search.search_k,23), 
+                    "lambda_mult": 0.3,
                 }
             )
             
