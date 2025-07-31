@@ -12,7 +12,7 @@ import logging
 # Load environment variables
 load_dotenv(override=True)
 
-def get_env_value(key: str, default: str) -> str:
+def get_env_value(key: str, default: str) -> str:  
     """Get environment variable value, stripping comments and whitespace"""
     load_dotenv(override=True)
     value = os.getenv(key, default)
@@ -21,9 +21,9 @@ def get_env_value(key: str, default: str) -> str:
         value = value.split('#')[0]
         # Strip whitespace
         value = value.strip()
-    return value
+    return value 
 
-@dataclass
+@dataclass 
 class DatabaseConfig:
     """Qdrant database configuration"""
     url: str = field(default_factory=lambda: get_env_value("QDRANT_URL", "http://localhost:6333"))

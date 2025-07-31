@@ -3,18 +3,18 @@ import os
 
 # Server Socket
 bind = f"0.0.0.0:{os.getenv('PORT', '8000')}"
-backlog = 2048  # Reasonable backlog for 10-15 concurrent users
+backlog = 2048  # Increased backlog for better connection handling
 
-# Worker Processes
+# Worker Processes - Optimized for CPU-bound and I/O-bound workloads
 workers_str = os.getenv('WORKERS', '').split('#')[0].strip()
-workers = int(workers_str) if workers_str.isdigit() else (multiprocessing.cpu_count() * 2 + 1)
+workers = min(8, int(workers_str)) if workers_str.isdigit() else min(8, (multiprocessing.cpu_count() * 2) + 1)
 worker_class = 'uvicorn.workers.UvicornWorker'
-worker_connections = 1000
-max_requests = 1000  # Restart workers after this many requests
-max_requests_jitter = 100  # Random jitter to prevent thundering herd
-timeout = int(os.getenv('TIMEOUT', '120'))
-keepalive = int(os.getenv('KEEP_ALIVE', '30'))
-threads = 2  # 2 threads per worker for I/O bound operations
+worker_connections = 2000  # Increased for better concurrency
+max_requests = 500  # Restart workers more frequently to prevent memory leaks
+max_requests_jitter = 50  # Reduced jitter for more predictable worker recycling
+timeout = 300  # Increased timeout for document processing
+keepalive = 60  # Increased keepalive for persistent connections
+threads = 4  # Increased threads per worker for I/O bound operations
 
 # Memory Management
 preload_app = True  # Load application before forking workers

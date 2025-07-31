@@ -43,7 +43,7 @@ nltk>=3.8.1
 # Utilities
 python-dotenv
 python-multipart
-psutil
+psutil>=5.9.0  # For system monitoring
 langchain-text-splitters
 fastembed-gpu
 sentence-transformers

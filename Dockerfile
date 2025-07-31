@@ -50,16 +50,23 @@ RUN pip install --upgrade pip && \
     ENV PYTHONDONTWRITEBYTECODE=1 \
         PYTHONUNBUFFERED=1 \
         PYTHONHASHSEED=random \
+        PYTHONMALLOC=malloc \
+        MALLOC_TRIM_THRESHOLD_=65536 \
         PIP_NO_CACHE_DIR=off \
         PIP_DISABLE_PIP_VERSION_CHECK=on \
         PIP_DEFAULT_TIMEOUT=100 \
         PORT=8000 \
-        WORKERS=17 \
-        TIMEOUT=180 \
-        KEEP_ALIVE=45 \
+        WORKERS=8 \
+        TIMEOUT=300 \
+        KEEP_ALIVE=60 \
         LOG_LEVEL=info \
         HF_HOME=/home/appuser/.cache/huggingface \
-        NLTK_DATA=/app/nltk_data 
+        NLTK_DATA=/app/nltk_data \
+        OMP_NUM_THREADS=1 \
+        MKL_NUM_THREADS=1 \
+        OPENBLAS_NUM_THREADS=1 \
+        VECLIB_MAXIMUM_THREADS=1 \
+        NUMEXPR_NUM_THREADS=1
     
     # Copy configs
     COPY gunicorn.conf.py .

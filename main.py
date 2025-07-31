@@ -66,7 +66,7 @@ os.environ["NLTK_DATA"] = str(nltk_data_dir.absolute())
 
 # Download required NLTK data
 required_nltk_data = [
-    'punkt',
+    'punkt_tab',
     'averaged_perceptron_tagger',
     'averaged_perceptron_tagger_eng',  # Specifically required by unstructured
     'wordnet',
@@ -601,6 +601,7 @@ async def ask_hr(request: QueryRequest):
     except Exception as e:
         logger.error(f"Error: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
+
 # Add health check endpoint
 @app.get("/health", status_code=status.HTTP_200_OK)
 async def health_check():
@@ -612,4 +613,32 @@ async def health_check_options():
     """OPTIONS handler for health check endpoint"""
     return {"status": "ok"}
 
-# Pre-warm the model on startup        
+@app.get("/metrics")
+async def get_metrics():
+    """Metrics endpoint for monitoring system resources"""
+    import psutil
+    import os
+    
+    process = psutil.Process(os.getpid())
+    memory_info = process.memory_info()
+    
+    return {
+        "process": {
+            "memory_mb": memory_info.rss / (1024 * 1024),
+            "cpu_percent": process.cpu_percent(),
+            "threads": process.num_threads(),
+            "connections": len(process.net_connections())
+        },
+        "system": {
+            "cpu_percent": psutil.cpu_percent(),
+            "virtual_memory": psutil.virtual_memory()._asdict(),
+            "disk_usage": psutil.disk_usage('/')._asdict()
+        },
+        "gunicorn": {
+            "workers": int(os.getenv('WORKERS', '8')),
+            "threads": int(os.getenv('THREADS', '4')),
+            "timeout": int(os.getenv('TIMEOUT', '300'))
+        }
+    }
+
+# Pre-warm the model on startup
