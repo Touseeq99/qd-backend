@@ -4,12 +4,15 @@ os.environ["NLTK_DATA"] = os.getenv("NLTK_DATA", "/app/nltk_data")
 
 import time
 import logging
-from fastapi import FastAPI, HTTPException, UploadFile, File, Form, status
+import uuid
+from fastapi import FastAPI, HTTPException, UploadFile, File, Form, status, Request, Response
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
-from typing import List
+from typing import List, Dict, Optional
 import re
 import shutil
 from dotenv import load_dotenv
+from datetime import datetime
 
 # Load environment variables from .env file
 load_dotenv()
@@ -236,12 +239,31 @@ def timeit(func):
         return result
     return wrapper
 
+# In-memory storage for sessions and message history
+sessions: Dict[str, List[Dict]] = {}
+
+def get_or_create_session(session_id: Optional[str] = None) -> str:
+    """Get existing session ID or create a new one if none provided"""
+    if not session_id or session_id not in sessions:
+        session_id = str(uuid.uuid4())
+        sessions[session_id] = []
+    return session_id
+
+class Message(BaseModel):
+    role: str  # 'user' or 'assistant'
+    content: str
+    timestamp: str
+
 class QueryRequest(BaseModel):
     question: str = Field(
         ...,
         min_length=3,
         max_length=1000,
         description="The HR-related question to answer"
+    )
+    session_id: Optional[str] = Field(
+        None,
+        description="Session ID to maintain conversation history. If not provided, a new session will be created."
     )
 class IngestRequest(BaseModel):
     directory_path: str = Field( 
@@ -560,32 +582,55 @@ def collection_stats():
 @timeit
 async def ask_hr(request: QueryRequest):
     try:
-        logger.info(f"Received question: {request.question}")
+        # Get or create session
+        session_id = get_or_create_session(request.session_id)
+        
+        logger.info(f"Session {session_id}: Received question: {request.question}")
+        
+        # Add user message to history
+        sessions[session_id].append({
+            "role": "user",
+            "content": request.question,
+            "timestamp": datetime.utcnow().isoformat()
+        })
+        
+        # Get chat history (all messages except the current one we just added)
+        chat_history = sessions[session_id][:-1]
         
         # Time chain initialization
         start_chain = time.time()
-        qa_chain = get_cached_hr_assistant_chain(
+        create_chain_with_history = get_cached_hr_assistant_chain(
             config.database.url, 
             config.database.api_key, 
             config.database.collection_name
         )
         logger.info(f"Chain init: {time.time() - start_chain:.2f}s")
-
+        
+        # Create a chain with the current chat history
+        qa_chain = create_chain_with_history(chat_history)
+        
         # Time question processing
         start_process = time.time()
-        # Use .invoke() instead of direct call
         result = qa_chain.invoke({"input": request.question})
         logger.info(f"Question processing: {time.time() - start_process:.2f}s")
+
+        # Add assistant response to history
+        sessions[session_id].append({
+            "role": "assistant",
+            "content": result.get("answer", "No response."),
+            "timestamp": datetime.utcnow().isoformat()
+        })
+        
+        # Keep only the most recent message pair (user + assistant)
+        if len(sessions[session_id]) > 2:
+            sessions[session_id] = sessions[session_id][-2:]
 
         # Extract document names from context if available
         sources = [] 
         context = result.get("context")
-        print(context)
         if context: 
             import os
-            # context may be a list of Document objects or dicts
             for doc in context:
-                # Try both dict and object access
                 source_path = None
                 if isinstance(doc, dict):
                     source_path = doc.get("metadata", {}).get("source")
@@ -593,7 +638,9 @@ async def ask_hr(request: QueryRequest):
                     source_path = getattr(getattr(doc, "metadata", {}), "get", lambda k, d=None: None)("source")
                 if source_path:
                     sources.append(os.path.basename(source_path))
+                    
         return {
+            "session_id": session_id,
             "answer": result.get("answer", "No response."),
             "sources": sources,
             "processing_time": f"{time.time() - start_process:.2f}s"
@@ -602,11 +649,34 @@ async def ask_hr(request: QueryRequest):
         logger.error(f"Error: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/session/{session_id}")
+async def get_session_history(session_id: str):
+    """Get the message history for a specific session"""
+    if session_id not in sessions:
+        raise HTTPException(status_code=404, detail="Session not found")
+    return {
+        "session_id": session_id,
+        "messages": sessions[session_id]
+    }
+
 # Add health check endpoint
 @app.get("/health", status_code=status.HTTP_200_OK)
 async def health_check():
     """Health check endpoint for monitoring"""
     return {"status": "healthy", "service": "hr-assistant"}
+
+@app.get("/test/concurrency")
+async def test_concurrency():
+    """Test endpoint for concurrency testing"""
+    import time
+    import threading
+    # Simulate some work (5ms)
+    time.sleep(0.005)
+    return {
+        "worker_id": os.getpid(),
+        "thread_id": threading.get_ident(),
+        "timestamp": time.time()
+    }
 
 @app.options("/health")
 async def health_check_options(): 

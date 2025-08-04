@@ -1,11 +1,24 @@
 import re
 from docx import Document
 from typing import List, Dict, Optional
-
+import json
 def extract_docx_text(file_path: str) -> List[str]:
-    """Extract non-empty paragraphs from the .docx file."""
+    """Extract text from .docx file including paragraphs and tables."""
     doc = Document(file_path)
-    return [para.text.strip() for para in doc.paragraphs if para.text.strip()]
+    content = []
+    
+    # Extract paragraphs
+    content.extend(para.text.strip() for para in doc.paragraphs if para.text.strip())
+    
+    # Extract tables
+    for table in doc.tables:
+        for row in table.rows:
+            # Join all cell texts in the row with tabs
+            row_text = ' | '.join(cell.text.strip() for cell in row.cells)
+            if row_text:
+                content.append(row_text)
+    
+    return content
 
 def is_clause_line(text: str) -> Optional[str]:
     """
@@ -77,6 +90,8 @@ def inspect_chunks(file_path: str):
     paragraphs = extract_docx_text(file_path)
     chunks = chunk_by_clause_or_heading(paragraphs)
     print(f"\n✅ Total chunks: {len(chunks)}\n")
+    with open("chunks.json", "w", encoding="utf-8") as f:
+        json.dump(chunks, f, indent=4, ensure_ascii=False)
     for i, chunk in enumerate(chunks):
         print(f"--- Chunk {i+1}: {chunk['clause']} ---\n{chunk['content'][:500]}...\n{'='*60}")
 
@@ -84,4 +99,4 @@ def inspect_chunks(file_path: str):
 # Example:
 # inspect_chunks(r"C:\Users\user\Desktop\QD_HR_ASSISTANT\3. Attendance Policy 3.0.docx")
 # or
-inspect_chunks(r"C:\Users\user\Desktop\QD_HR_ASSISTANT\9. QG Code of Conduct.docx")
+inspect_chunks(r"C:\Users\user\Desktop\QD_HR_ASSISTANT\1a. Compensation and Benefits.docx")

@@ -29,10 +29,23 @@ executor = ThreadPoolExecutor(max_workers=10)
 # -------------------------
 
 def extract_docx_text(file_path: str) -> List[str]:
-    """Extract non-empty paragraphs from the .docx file."""
+    """Extract text from .docx file including paragraphs and tables."""
     from docx import Document
     doc = Document(file_path)
-    return [para.text.strip() for para in doc.paragraphs if para.text.strip()]
+    content = []
+    
+    # Extract paragraphs
+    content.extend(para.text.strip() for para in doc.paragraphs if para.text.strip())
+    
+    # Extract tables
+    for table in doc.tables:
+        for row in table.rows:
+            # Join all cell texts in the row with tabs
+            row_text = ' | '.join(cell.text.strip() for cell in row.cells)
+            if row_text:
+                content.append(row_text)
+    
+    return content
 
 def is_clause_line(text: str) -> Optional[str]:
     """
@@ -108,8 +121,40 @@ def process_document(text: str, policy_name: str) -> List[Document]:
     from config import get_config
     config = get_config()
     
-    # Split text into paragraphs (simulating docx paragraphs)
-    paragraphs = [p for p in text.split('\n') if p.strip()]
+    # Split into paragraphs while preserving table rows
+    paragraphs = []
+    current_para = []
+    
+    for line in text.split('\n'):
+        line = line.strip()
+        if not line:
+            continue
+            
+        # Check if this is a table row (contains | or is a row of a table)
+        is_table_row = '|' in line or (current_para and '|' in current_para[0])
+        
+        if is_table_row:
+            # Add to current paragraph if it's empty or also a table row
+            if not current_para or '|' in current_para[0]:
+                current_para.append(line)
+            else:
+                # Start a new paragraph for the table
+                if current_para:
+                    paragraphs.append('\n'.join(current_para))
+                current_para = [line]
+        else:
+            # Regular paragraph text
+            if current_para and '|' in current_para[0]:
+                # Flush the current table
+                if current_para:
+                    paragraphs.append('\n'.join(current_para))
+                current_para = [line]
+            else:
+                current_para.append(line)
+    
+    # Add the last paragraph
+    if current_para:
+        paragraphs.append('\n'.join(current_para))
     
     # Use enhanced chunking that handles both numbered clauses and headings
     chunks = chunk_by_clause_or_heading(paragraphs)

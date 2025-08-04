@@ -177,6 +177,7 @@ def load_llm():
                 openai_api_base=llm_config.get('api_base', "https://openrouter.ai/api/v1"),
                 temperature=llm_config.get('temperature', 0.1),
                 openai_api_key=llm_config['api_key'],
+                top_p=llm_config.get('top_p', 0.9),
             )
         elif llm_config['provider'] == 'google':
             _llm_cache = GoogleGenerativeAI(
@@ -443,10 +444,10 @@ def get_hr_assistant_chain(qdrant_url: str, qdrant_api: str, collection_name: st
             base_retriever = _vector_store.as_retriever(
                 search_type="mmr",
                 search_kwargs={
-                    "k": min(config.vector_search.search_k,23), 
-                    "lambda_mult": 0.3,
+                    "k": config.vector_search.search_k, 
+                    "lambda_mult": 0.4,   
                 }
-            )
+            )     
             
             # Use the base retriever as mmr_retriever for compatibility
             mmr_retriever = base_retriever
@@ -455,7 +456,7 @@ def get_hr_assistant_chain(qdrant_url: str, qdrant_api: str, collection_name: st
             # 4. Load LLM with caching and warm-up 
             llm_start = time.time()
             global _llm_cache
-            if _llm_cache is None:
+            if _llm_cache is None:     
                 _llm_cache = load_llm()  
             llm = _llm_cache
             
@@ -468,15 +469,40 @@ def get_hr_assistant_chain(qdrant_url: str, qdrant_api: str, collection_name: st
             
             timings['load_llm'] = time.time() - llm_start
             
-            # 5. Create QA Chain with optimized prompt
+            # 5. Create QA Chain with optimized prompt and chat history
             chain_start = time.time()
             
-            qa_chain = create_stuff_documents_chain(llm, hr_prompt)
-            retrieval_chain = create_retrieval_chain(mmr_retriever, qa_chain)
-            # Simplified chain without memory
-            _chain_cache = retrieval_chain
-            return retrieval_chain
+            def format_chat_history(chat_history: list) -> str:
+                """Format chat history for inclusion in the prompt"""
+                if not chat_history:
+                    return "No previous conversation history."
+                    
+                formatted_history = []
+                for msg in chat_history:
+                    role = "User" if msg["role"] == "user" else "Assistant"
+                    formatted_history.append(f"{role}: {msg['content']}")
+                
+                return "\n".join(formatted_history)
+            
+            # Create a new prompt with chat history
+            def get_prompt_with_history(chat_history: list = None):
+                history_text = format_chat_history(chat_history or [])
+                return ChatPromptTemplate.from_template(
+                    hr_prompt.messages[0].prompt.template.replace(
+                        "{chat_history}", 
+                        history_text
+                    )
+                )
+            
+            # Create a chain that includes chat history
+            def create_chain_with_history(chat_history: list = None):
+                prompt = get_prompt_with_history(chat_history)
+                qa_chain = create_stuff_documents_chain(llm, prompt)
+                return create_retrieval_chain(mmr_retriever, qa_chain)
+            
+            # Return a function that can create a chain with specific chat history
+            return create_chain_with_history
 
-    except Exception as e:
+    except Exception as e:    
         logger.error(f"Error in get_hr_assistant_chain: {str(e)}", exc_info=True)
         raise

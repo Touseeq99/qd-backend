@@ -5,22 +5,29 @@ import os
 bind = f"0.0.0.0:{os.getenv('PORT', '8000')}"
 backlog = 2048  # Increased backlog for better connection handling
 
-# Worker Processes - Optimized for CPU-bound and I/O-bound workloads
+# Worker Processes - Optimized for I/O-bound workloads with async support
 workers_str = os.getenv('WORKERS', '').split('#')[0].strip()
 workers = min(8, int(workers_str)) if workers_str.isdigit() else min(8, (multiprocessing.cpu_count() * 2) + 1)
 worker_class = 'uvicorn.workers.UvicornWorker'
-worker_connections = 2000  # Increased for better concurrency
-max_requests = 500  # Restart workers more frequently to prevent memory leaks
-max_requests_jitter = 50  # Reduced jitter for more predictable worker recycling
-timeout = 300  # Increased timeout for document processing
-keepalive = 60  # Increased keepalive for persistent connections
-threads = 4  # Increased threads per worker for I/O bound operations
+worker_connections = 10000  # Dramatically increased for better concurrency
+max_requests = 1000  # Restart workers to prevent memory leaks
+max_requests_jitter = 200  # Randomize max_requests to prevent all workers restarting at once
+timeout = 300  # Keep timeout for long-running operations
+keepalive = 10  # Reduced keepalive to free up connections faster
+threads = 4  # Threads per worker
+worker_tmp_dir = '/dev/shm'  # Use shared memory for worker temp files
+
+# Async worker settings
+worker_class = 'uvicorn.workers.UvicornWorker'
+worker_connections = 10000
+
+# Enable keepalive for better performance
+keepalive = 10  # seconds
 
 # Memory Management
-preload_app = True  # Load application before forking workers
+preload_app = False  # Set to False to avoid potential issues with async code
 max_requests = 1000
 max_requests_jitter = 200
-worker_tmp_dir = '/dev/shm'  # Use shared memory for worker temp files
 
 # Security
 limit_request_line = 4094  # Maximum size of HTTP request line

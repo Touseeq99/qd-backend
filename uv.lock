@@ -2278,6 +2278,7 @@ dependencies = [
     { name = "sse-starlette" },
     { name = "unstructured", extra = ["docx"] },
     { name = "uvicorn" },
+    { name = "wrk" },
 ]
 
 [package.metadata]
@@ -2310,6 +2311,7 @@ requires-dist = [
     { name = "sse-starlette", specifier = ">=2.3.6" },
     { name = "unstructured", extras = ["docx"], specifier = ">=0.18.2" },
     { name = "uvicorn", specifier = ">=0.35.0" },
+    { name = "wrk", specifier = ">=0.3.2" },
 ]
 
 [[package]]
@@ -3042,6 +3044,12 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/09/5e/1655cf481e079c1f22d0cabdd4e51733679932718dc23bf2db175f329b76/wrapt-1.17.2-cp313-cp313t-win_amd64.whl", hash = "sha256:eaf675418ed6b3b31c7a989fd007fa7c3be66ce14e5c3b27336383604c9da85c", size = 40750, upload-time = "2025-01-14T10:35:03.378Z" },
     { url = "https://files.pythonhosted.org/packages/2d/82/f56956041adef78f849db6b289b282e72b55ab8045a75abad81898c28d19/wrapt-1.17.2-py3-none-any.whl", hash = "sha256:b18f2d1533a71f069c7f82d524a52599053d4c7166e9dd374ae2136b7f40f7c8", size = 23594, upload-time = "2025-01-14T10:35:44.018Z" },
 ]
+
+[[package]]
+name = "wrk"
+version = "0.3.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/00/e2/b0e26e0476858baa07fbe0aa0a3d01ce236d61d0bfd878781bf1788b77ae/wrk-0.3.2.tar.gz", hash = "sha256:49566bb3cc14e3d5bd63cc94c9b106b2b4d20ee71684e4d81fb395131a2126bf", size = 26617, upload-time = "2019-05-27T16:04:36.466Z" }
 
 [[package]]
 name = "xxhash"

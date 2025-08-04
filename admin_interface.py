@@ -553,6 +553,7 @@ class ModelUpdateRequest(BaseModel):
     groq_model: str
     google_model: str
     openrouter_model: str
+    openai_model: str = ""  # Added missing field with default empty string
     embedding_provider: str
     embedding_model_google: str
     embedding_model_cohere: str

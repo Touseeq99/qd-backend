@@ -53,6 +53,8 @@ class LLMConfig:
     model_priority: int = field(default_factory=lambda: int(get_env_value("MODEL_PRIORITY", "1")))
     temperature: float = field(default_factory=lambda: float(get_env_value("TEMPERATURE", "0.8")))
 
+    top_p: float = field(default_factory=lambda: float(get_env_value("TOP_P", "0.9")))
+
 @dataclass
 class EmbeddingConfig:
     """Embedding model configuration"""
@@ -86,7 +88,7 @@ class VectorSearchConfig:
     """Vector search configuration"""
     chunk_size: int = field(default_factory=lambda: int(get_env_value("CHUNK_SIZE", "600")))
     chunk_overlap: int = field(default_factory=lambda: int(get_env_value("CHUNK_OVERLAP", "150")))
-    search_k: int = field(default_factory=lambda: int(get_env_value("SEARCH_K", "23")))
+    search_k: int = field(default_factory=lambda: int(get_env_value("SEARCH_K", "4")))
     fetch_k: int = field(default_factory=lambda: int(get_env_value("FETCH_K", "10")))
     score_threshold: float = field(default_factory=lambda: float(get_env_value("SCORE_THRESHOLD", "0.3")))
     # HNSW optimization parameters
@@ -102,7 +104,7 @@ class SecurityConfig:
     enable_cors: bool = field(default_factory=lambda: get_env_value("ENABLE_CORS", "true").lower() == "true")
 
 @dataclass
-class MonitoringConfig:
+class MonitoringConfig:   
     """Monitoring and analytics configuration"""
     enable_request_logging: bool = field(default_factory=lambda: get_env_value("ENABLE_REQUEST_LOGGING", "true").lower() == "true")
     enable_performance_monitoring: bool = field(default_factory=lambda: get_env_value("ENABLE_PERFORMANCE_MONITORING", "true").lower() == "true")
